@@ -4,7 +4,7 @@ import socket
 import getpass
 import traceback
 
-from models import *
+from models import select_model, get_all_actions
 
 
 def main():

@@ -62,7 +62,7 @@ class StatusRequest(GefyraRequest):
 
 
 @add_action("gefyra.up")
-class StatusRequest(GefyraRequest):
+class UpRequest(GefyraRequest):
     def __init__(self, **data: Any):
         super().__init__(**data)
 
@@ -77,7 +77,7 @@ class StatusRequest(GefyraRequest):
 
 
 @add_action("gefyra.down")
-class StatusRequest(GefyraRequest):
+class DownRequest(GefyraRequest):
     def __init__(self, **data: Any):
         super().__init__(**data)
 
@@ -98,15 +98,15 @@ class K8sRequest(ActionRequest):
 
     def _load_kube_config(self):
         from kubernetes import config
-        config.load_kube_config(
-            config_file=self.kubeconfig, context=self.context
-        )
+
+        config.load_kube_config(config_file=self.kubeconfig, context=self.context)
 
 
 @add_action("k8s.contexts")
-class K8sNamespaceRequest(K8sRequest):
+class K8sContextRequest(K8sRequest):
     def exec(self) -> dict:
         from kubernetes import config
+
         names = []
         contexts, active = config.list_kube_config_contexts(config_file=self.kubeconfig)
         if active:
@@ -115,10 +115,7 @@ class K8sNamespaceRequest(K8sRequest):
         for context in contexts:
             if type(context) == dict and "name" in context:
                 names.append(context["name"])
-        return {
-            "contexts": names,
-            "active": active
-        }
+        return {"contexts": names, "active": active}
 
 
 @add_action("k8s.namespaces")
@@ -134,7 +131,6 @@ class K8sNamespaceRequest(K8sRequest):
 
 @add_action("k8s.workloads")
 class K8sWorkloadsRequest(K8sRequest):
-
     def exec(self) -> dict:
         from kubernetes import client
 
@@ -165,7 +161,7 @@ class K8sWorkloadsRequest(K8sRequest):
 
 
 @add_action("k8s.images")
-class K8sWorkloadsRequest(K8sRequest):
+class K8sImagesRequest(K8sRequest):
     workload: str
     namespace: str
 
@@ -190,7 +186,9 @@ class K8sWorkloadsRequest(K8sRequest):
             images.append(
                 {
                     "image": container.image,
-                    "ports": [port.container_port for port in container.ports] if container.ports else [],
+                    "ports": [port.container_port for port in container.ports]
+                    if container.ports
+                    else [],
                 }
             )
         return {"containers": images}
