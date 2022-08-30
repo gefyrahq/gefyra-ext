@@ -1,3 +1,4 @@
+import logging
 import sys
 import json
 import socket
@@ -8,6 +9,7 @@ from models import select_model, get_all_actions
 
 
 def main():
+    logging.disable()
     debug = False
     try:
         arguments = sys.argv[1:]
