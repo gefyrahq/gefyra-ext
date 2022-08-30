@@ -1,13 +1,14 @@
 [tool.poetry]
-name = "gefyra-ext"
+name = "gefyra-json"
 version = "0.1.0"
 description = ""
-authors = ["Michael Schilonka <michael@blueshoe.de>"]
+authors = ["Michael Schilonka <michael@blueshoe.io>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pydantic = "^1.9.2"
 kubernetes = "^24.2.0"
+gefyra = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 

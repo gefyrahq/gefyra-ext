@@ -1,24 +1,33 @@
 import sys
 import json
+import socket
+import getpass
 import traceback
-from typing import List
 
 from models import *
 
 
-def main(arguments: List[str]):
+def main():
     debug = False
-
     try:
+        arguments = sys.argv[1:]
+        if not arguments:
+            raise RuntimeError("No JSON argument passed")
+
         json_raw = arguments[0]
         _input = json.loads(json_raw)
         debug = "debug" in _input and _input["debug"]
         action = select_model(_input)
         result = action.exec()
-        basic_val = {"status": "success"}
-        basic_val.update({"response": result})
 
-        print(json.dumps(basic_val))
+        reponse = {
+            "status": "success",
+            "available": get_all_actions(),
+            "host": socket.gethostname(),
+            "user": getpass.getuser(),
+        }
+        reponse.update({"response": result})
+        print(json.dumps(reponse))
     except Exception as e:
         if debug:
             print(
@@ -46,4 +55,4 @@ def main(arguments: List[str]):
 
 
 if __name__ == "__main__":  # noqa
-    main(sys.argv[1:])
+    main()
