@@ -5,7 +5,7 @@ This is a Gefyra API wrapper as binary with JSON as exchange format.
 A JSON request can be submitted with
 
 ```bash
-python main.py '{"action": "k8s.images", "workload": "deployment/gefyra-operator", "namespace": "gefyra"}'
+gefyra-json '{"action": "k8s.images", "workload": "deployment/gefyra-operator", "namespace": "gefyra"}'
 ```
 
 The response will be JSON:
@@ -19,7 +19,7 @@ The response will be JSON:
 Every repsonse contains a list of all possible action values:
 
 ```bash
-"available": ["gefyra.status", "gefyra.up", "gefyra.down", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"]
+[...] "available": ["gefyra.status", "gefyra.up", "gefyra.down", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"] [...]
 ```
 
 ## Fields/Interface
