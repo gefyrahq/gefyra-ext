@@ -35,7 +35,7 @@ jobs:
       with:
         name: gefyra-${{ env.APP_VERSION }}-linux-amd64
         path: |
-          gefyra
+          gefyra-json
           LICENSE
           README.md
         retention-days: 5

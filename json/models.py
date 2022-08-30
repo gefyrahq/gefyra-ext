@@ -135,7 +135,6 @@ class K8sNamespaceRequest(K8sRequest):
 @add_action("k8s.workloads")
 class K8sWorkloadsRequest(K8sRequest):
 
-
     def exec(self) -> dict:
         from kubernetes import client
 
@@ -191,7 +190,7 @@ class K8sWorkloadsRequest(K8sRequest):
             images.append(
                 {
                     "image": container.image,
-                    "ports": [port.container_port for port in container.ports],
+                    "ports": [port.container_port for port in container.ports] if container.ports else [],
                 }
             )
         return {"containers": images}
