@@ -20,14 +20,14 @@ def main():
         action = select_model(_input)
         result = action.exec()
 
-        reponse = {
+        response = {
             "status": "success",
             "available": get_all_actions(),
             "host": socket.gethostname(),
             "user": getpass.getuser(),
         }
-        reponse.update({"response": result})
-        print(json.dumps(reponse))
+        response.update({"response": result})
+        print(json.dumps(response))
     except Exception as e:
         if debug:
             print(
