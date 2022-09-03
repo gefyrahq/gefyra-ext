@@ -1,15 +1,17 @@
-const os = require("os");
+const os = require('os');
+const fs = require('fs');
 
-const { name } = require("./package.json");
+const { name } = require('./package.json');
 
 const downloadReleases = require('download-github-release');
 const { platform } = require('node:os');
+const { join } = require('path');
 
 
 const supportedPlatforms = [
   {
-    TYPE: "Linux",
-    TARGET: "linux-amd64"
+    TYPE: 'Linux',
+    TARGET: 'linux-amd64'
   }
 ];
 
@@ -27,14 +29,14 @@ const getPlatform = () => {
   }
 
   error(
-    `Platform with type "${type}" and architecture "${architecture}" is not supported by ${name}.\nYour system must be one of the following:\n\n${cTable.getTable(
+    `Platform with type '${type}' and architecture '${architecture}' is not supported by ${name}.\nYour system must be one of the following:\n\n${cTable.getTable(
       supportedPlatforms
     )}`
   );
 };
 
 function filterRelease(release) {
-    return release.name == "0.1.0";
+    return release.name == '0.1.0';
 }
   
 const binaryName = getPlatform()
@@ -49,6 +51,10 @@ var outputdir = __dirname;
 
 downloadReleases(user, repo, outputdir, filterRelease, filterAsset, false)
   .then(function() {
+    const type = os.type();
+    if (type == 'Linux' || type == 'Darwin'){
+      fs.chmodSync(join(outputdir, 'gefyra-json'), 0o111);
+    }
     console.log('All done!');
   })
   .catch(function(err) {
