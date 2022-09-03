@@ -1,0 +1,45 @@
+{
+  "name": "gefyra",
+  "version": "0.0.1",
+  "description": "A JS binding for Gefyra. Providing additional helpers for Dev tool extensions.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "postinstall": "node postinstall.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "cloud",
+    "development",
+    "gefyra",
+    "containers",
+    "software",
+    "cloud-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gefyrahq/gefyra-ext"
+  },
+  "homepage": "https://gefyra.dev",
+  "author": "Michael Schilonka",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "jest": "^28.1.3",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.8",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0"
+  },
+  "dependencies": {
+    "download-github-release": "^0.3.2"
+  }
+}
