@@ -1,6 +1,6 @@
 {
   "name": "gefyra",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A JS binding for Gefyra. Providing additional helpers for Dev tool extensions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -14,7 +14,8 @@
     "prepublishOnly": "npm run lint"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "postinstall.js"
   ],
   "keywords": [
     "cloud",

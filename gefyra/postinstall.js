@@ -1,6 +1,6 @@
 const os = require("os");
 
-const { version, name, repository } = require("./package.json");
+const { name } = require("./package.json");
 
 const downloadReleases = require('download-github-release');
 const { platform } = require('node:os');
@@ -34,7 +34,7 @@ const getPlatform = () => {
 };
 
 function filterRelease(release) {
-    return release.name == version;
+    return release.name == "0.1.0";
 }
   
 const binaryName = getPlatform()
