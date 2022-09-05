@@ -1,7 +1,19 @@
+import { ensureInstalled } from '../install';
+import { cleanBinary } from './install.tests';
 import gefyra from '../gefyra';
+import { GefyraStatusResponse } from '../protocol';
+
+jest.setTimeout(120000);
+beforeAll(async () => {
+  await ensureInstalled();
+});
+
+// afterAll(() => {
+//     cleanBinary();
+// });
 
 test('Gefyra Status', () => {
-  let output = gefyra();
-  let expectation = JSON.parse('{"status": "success", "available": ["gefyra.status", "gefyra.up", "gefyra.down", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"], "host": "thinkpad-x1", "user": "mschilonka", "response": {"status": "up"}}')
-  expect(output).toMatchObject(expectation);
+  let status = gefyra.status();
+  expect(status).toBeInstanceOf(GefyraStatusResponse);
+  expect(status.status).toEqual('up');
 });
