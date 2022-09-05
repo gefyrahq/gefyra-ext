@@ -1,24 +1,31 @@
 import { join } from 'path';
 import { execSync } from 'child_process';
 import { binaryPath } from './install';
-import { GefyraStatusRequest, GefyraRequest, GefyraStatusResponse } from './protocol';
+import * as proto from './protocol';
 
 export class Gefyra {
-  binary: string;
+  private binary: string;
 
   constructor(binary: string) {
     this.binary = binary;
   }
 
-  private execSync(request: GefyraRequest): any {
+  private execSync(request: proto.GefyraRequest): any {
     return execSync(`${this.binary} '${request.serialize()}'`);
   }
 
-  status(): GefyraStatusResponse {
-    const res = this.execSync(new GefyraStatusRequest());
-    return new GefyraStatusResponse(res);
+  status(): proto.GefyraStatusResponse {
+    const res = this.execSync(new proto.GefyraStatusRequest());
+    return new proto.GefyraStatusResponse(res);
+  }
+
+  up(): proto.GefyraUpResponse {
+    const res = this.execSync(new proto.GefyraUpRequest());
+    return new proto.GefyraUpResponse(res);
+  }
+
+  down(): proto.GefyraDownResponse {
+    const res = this.execSync(new proto.GefyraDownRequest());
+    return new proto.GefyraDownResponse(res);
   }
 }
-
-const gefyra = new Gefyra(binaryPath);
-export default gefyra;

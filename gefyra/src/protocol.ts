@@ -16,6 +16,20 @@ export class GefyraStatusRequest extends GefyraRequest {
   }
 }
 
+export class GefyraUpRequest extends GefyraRequest {
+  constructor() {
+    super();
+    this.action = 'gefyra.up';
+  }
+}
+
+export class GefyraDownRequest extends GefyraRequest {
+  constructor() {
+    super();
+    this.action = 'gefyra.down';
+  }
+}
+
 // ===== APi Respones ====
 class GefyraResponse {
   status!: string;
@@ -34,6 +48,26 @@ class GefyraResponse {
 }
 
 export class GefyraStatusResponse extends GefyraResponse {
+  status!: string;
+
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res);
+    this.status = obj.status;
+  }
+}
+
+export class GefyraUpResponse extends GefyraResponse {
+  status!: string;
+
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res);
+    this.status = obj.status;
+  }
+}
+
+export class GefyraDownResponse extends GefyraResponse {
   status!: string;
 
   constructor(res: string) {

@@ -1,6 +1,6 @@
 {
   "name": "gefyra",
-  "version": "0.0.6",
+  "version": "0.0.12",
   "description": "A JS binding for Gefyra. Providing additional helpers for Dev tool extensions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,6 +9,7 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
+    "postinstall": "",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint"
   },

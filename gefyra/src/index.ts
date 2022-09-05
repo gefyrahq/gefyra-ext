@@ -1,4 +1,6 @@
-import gefyra from './gefyra';
+import { Gefyra as Klass } from './gefyra';
+import * as installer from './install';
 
-module.exports = gefyra;
-export default gefyra;
+export const Gefyra = Klass;
+export const gefyraClient = new Klass(installer.binaryPath);
+export const gefyraInstaller = installer;

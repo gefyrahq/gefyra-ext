@@ -71,6 +71,16 @@ export function checkInstalled() {
   }
 }
 
+export function isInstalled(): boolean {
+  try {
+    checkInstalled()
+    return true;
+  }
+  catch (InstallError) {
+    return false;
+  }
+}
+
 export function ensureInstalled() {
   try {
     checkInstalled();
