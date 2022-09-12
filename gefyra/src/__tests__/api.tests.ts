@@ -1,6 +1,6 @@
 import { ensureInstalled } from '../install';
 import { cleanBinary } from './install.tests';
-import gefyra from '../gefyra';
+import { gefyraClient } from '../index';
 import { GefyraStatusResponse } from '../protocol';
 
 jest.setTimeout(120000);
@@ -12,8 +12,8 @@ beforeAll(async () => {
 //     cleanBinary();
 // });
 
-test('Gefyra Status', () => {
-  let status = gefyra.status();
+test('Gefyra Status', async () => {
+  let status = await gefyraClient.status();
   expect(status).toBeInstanceOf(GefyraStatusResponse);
   expect(status.status).toEqual('up');
 });

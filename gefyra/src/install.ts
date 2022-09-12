@@ -73,10 +73,9 @@ export function checkInstalled() {
 
 export function isInstalled(): boolean {
   try {
-    checkInstalled()
+    checkInstalled();
     return true;
-  }
-  catch (InstallError) {
+  } catch (InstallError) {
     return false;
   }
 }

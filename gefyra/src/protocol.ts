@@ -17,6 +17,7 @@ export class GefyraStatusRequest extends GefyraRequest {
 }
 
 export class GefyraUpRequest extends GefyraRequest {
+  
   constructor() {
     super();
     this.action = 'gefyra.up';
