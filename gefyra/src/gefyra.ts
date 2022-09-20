@@ -12,7 +12,7 @@ export class Gefyra {
     this.binary = binary;
   }
 
-  private async exec(request: proto.GefyraRequest) {
+  protected async exec(request: proto.GefyraRequest) {
     const { stdout } = await pexec(`${this.binary} '${request.serialize()}'`);
     return stdout;
   }
