@@ -11,6 +11,6 @@ class StatusRequest(GefyraRequest):
 
     def exec(self) -> dict:
         from gefyra.api import status
+
         status = status(config=self.configuration)
         return dataclasses.asdict(status)
-

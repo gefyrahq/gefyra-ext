@@ -5,7 +5,7 @@ import socket
 import getpass
 import traceback
 
-import gefyra
+import gefyra.configuration
 
 from models import select_model, get_all_actions
 
@@ -29,7 +29,7 @@ def main():
             "available": get_all_actions(),
             "host": socket.gethostname(),
             "user": getpass.getuser(),
-            "apiVersion": gefyra.configuration.__VERSION__
+            "apiVersion": gefyra.configuration.__VERSION__,
         }
         response.update({"response": result})
         print(json.dumps(response))

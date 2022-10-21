@@ -10,6 +10,6 @@ class DownRequest(GefyraRequest):
 
     def exec(self) -> dict:
         from gefyra.api import down
+
         success = down(config=self.configuration)
         return {"status": success}
-

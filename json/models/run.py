@@ -10,5 +10,6 @@ class RunRequest(GefyraRequest):
 
     def exec(self) -> dict:
         from gefyra.api import run
+
         success = run(config=self.configuration)
         return {"status": success}

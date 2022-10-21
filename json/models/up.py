@@ -21,7 +21,8 @@ class UpRequest(GefyraRequest):
                 kubecfg = yaml.safe_load(_kubeconfig)
             active_ctx = next(
                 filter(
-                    lambda x: x["name"] == kubecfg["current-context"], kubecfg["contexts"]
+                    lambda x: x["name"] == kubecfg["current-context"],
+                    kubecfg["contexts"],
                 )
             )
             if gefyra_connection := active_ctx.get("gefyra"):
@@ -30,7 +31,6 @@ class UpRequest(GefyraRequest):
                 return None
         except Exception as e:  # noqa
             return None
-
 
     @property
     def configuration(self):
@@ -61,5 +61,6 @@ class UpRequest(GefyraRequest):
 
     def exec(self) -> dict:
         from gefyra.api import up
+
         success = up(config=self.configuration)
         return {"status": success}

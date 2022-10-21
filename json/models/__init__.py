@@ -63,8 +63,9 @@ class K8sRequest(ActionRequest):
         config.load_kube_config(config_file=self.kubeconfig, context=self.context)
 
 
-from .up import *
-from .down import *
-from .status import *
-from ._list import *
-from .k8s import *
+from .help import *  # noqa
+from .up import *  # noqa
+from .down import *  # noqa
+from .status import *  # noqa
+from ._list import *  # noqa
+from .k8s import *  # noqa
