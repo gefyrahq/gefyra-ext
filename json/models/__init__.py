@@ -67,5 +67,7 @@ from .help import *  # noqa
 from .up import *  # noqa
 from .down import *  # noqa
 from .status import *  # noqa
+from .run import *  # noqa
+from .bridge import *  # noqa
 from ._list import *  # noqa
 from .k8s import *  # noqa

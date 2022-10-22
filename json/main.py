@@ -9,6 +9,7 @@ import gefyra.configuration
 
 from models import select_model, get_all_actions
 
+__VERSION__ = "0.1.0"
 
 def main():
     logging.disable()
@@ -30,6 +31,7 @@ def main():
             "host": socket.gethostname(),
             "user": getpass.getuser(),
             "apiVersion": gefyra.configuration.__VERSION__,
+            "version": __VERSION__
         }
         response.update({"response": result})
         print(json.dumps(response))

@@ -23,6 +23,6 @@ Every response contains a list of all possible action values:
 ```
 
 ## Fields/Interface
-Please consult the `models.py` for the [pydantic](https://pydantic-docs.helpmanual.io/) interfaces and available
+Please consult the `models/` directory for the [pydantic](https://pydantic-docs.helpmanual.io/) interfaces and available
 fields.
 
