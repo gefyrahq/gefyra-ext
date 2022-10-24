@@ -1,5 +1,6 @@
 from typing import Any
 
+from docker import DockerClient
 from pydantic import BaseModel
 
 __ACTIONS__ = {}
@@ -63,11 +64,24 @@ class K8sRequest(ActionRequest):
         config.load_kube_config(config_file=self.kubeconfig, context=self.context)
 
 
+class DockerRequest(ActionRequest):
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+
+    @property
+    def client(self) -> DockerClient:
+        import docker
+
+        return docker.from_env()
+
+
 from .help import *  # noqa
 from .up import *  # noqa
 from .down import *  # noqa
 from .status import *  # noqa
 from .run import *  # noqa
 from .bridge import *  # noqa
+from .unbridge import *  # noqa
 from ._list import *  # noqa
 from .k8s import *  # noqa
+from .docker import *  # noqa

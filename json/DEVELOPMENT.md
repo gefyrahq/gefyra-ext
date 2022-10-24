@@ -128,20 +128,30 @@ Check out this workload running under: http://hello.127.0.0.1.nip.io:8080/
 > ./gefyra-json '{"action": "gefyra.run", "image": "pyserver", "name": "mypyserver", "namespace": "default", "autoremove": true}'
 {"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"status": true}}
 ```
-5) gefyra bridge
+5) docker ps
+```bash
+> ./gefyra-json '{"action": "docker.list", "gefyra": true}'
+{"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.bridge", "gefyra.unbridge", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images", "docker.list", "docker.kill", "docker.remove"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"containers": [{"name": "gefyra-cargo", "id": "8ffe0a7cf268326018923d361b0311b68c288d7752851df584813ddd29430f92", "image": "gefyra-cargo:20221024141533", "status": "running"}, {"name": "mypyserver", "id": "9cbfeebabc172455424c09a5369092d564bbfcb8ec4d5f59e7c5be656b76244f", "image": "pyserver:latest", "status": "running"}]}}
+```
+6) gefyra bridge
 ```bash
 > ./gefyra-json '{"action": "gefyra.bridge", "name": "mypyserver", "target": "deployment/hello-nginxdemo/hello-nginx", "ports": {"80":"8000"}, "namespace": "default"}'
 {"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.bridge", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"status": true}} 
 ```
 Please check the output of http://hello.127.0.0.1.nip.io:8080/ 
-
 6) gefyra list
 ```bash
 > ./gefyra-json '{"action": "gefyra.list"}'
 {"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.bridge", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"containers": [["mypyserver", "172.22.0.2", "default"]], "bridges": ["mypyserver-to-default.deployment.hello-nginxdemo"]}}
 ```
-7) gefyra down
+7) gefyra unbride
 ```bash
-> ./gefyra-json '{"action": "gefyra.down"'
+> ./gefyra-json '{"action": "gefyra.unbridge", "name": "mypyserver-to-default.deployment.hello-nginxdemo"}'
+{"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.bridge", "gefyra.unbridge", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images", "docker.list", "docker.kill", "docker.remove"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"status": true}}
+```
+
+8) gefyra down
+```bash
+> ./gefyra-json '{"action": "gefyra.down"}'
 {"status": "success", "available": ["help", "gefyra.up", "gefyra.down", "gefyra.status", "gefyra.run", "gefyra.list", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"], "host": "thinkpad-x1", "user": "mschilonka", "apiVersion": "0.12.0", "version": "0.1.0", "response": {"status": true}}
 ```
