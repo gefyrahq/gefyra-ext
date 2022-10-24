@@ -9,7 +9,7 @@ class BridgeRequest(GefyraRequest):
     name: str
     ports: dict
     target: str
-    namespace: str = "default",
+    namespace: str = "default"
     syncdowndirs: List[str] = None
     handleprobes: bool = True
     timeout: int = 0
@@ -28,5 +28,6 @@ class BridgeRequest(GefyraRequest):
             sync_down_dirs=self.syncdowndirs,
             handle_probes=self.handleprobes,
             timeout=self.timeout,
-            config=self.configuration)
+            config=self.configuration,
+        )
         return {"status": success}

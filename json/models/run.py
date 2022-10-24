@@ -34,5 +34,6 @@ class RunRequest(GefyraRequest):
             namespace=self.namespace,
             env=self.env,
             env_from=self.envfrom,
-            config=self.configuration)
+            config=self.configuration,
+        )
         return {"status": success}
