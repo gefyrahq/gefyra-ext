@@ -16,13 +16,13 @@ The response will be JSON:
 
 
 ## Available 'actions'
-Every repsonse contains a list of all possible action values:
+Every response contains a list of all possible action values:
 
 ```bash
 [...] "available": ["gefyra.status", "gefyra.up", "gefyra.down", "k8s.contexts", "k8s.namespaces", "k8s.workloads", "k8s.images"] [...]
 ```
 
 ## Fields/Interface
-Please consult the `models.py` for the [pydantic](https://pydantic-docs.helpmanual.io/) interfaces and available
+Please consult the `models/` directory for the [pydantic](https://pydantic-docs.helpmanual.io/) interfaces and available
 fields.
 
