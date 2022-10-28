@@ -9,6 +9,8 @@ class UpRequest(GefyraRequest):
 
     endpoint: str = None
     minikube: bool = False
+    kubeconfig: str = None
+    context: str = None
 
     def __init__(self, **data: Any):
         super().__init__(**data)

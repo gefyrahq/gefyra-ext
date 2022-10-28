@@ -33,8 +33,7 @@ def get_all_actions() -> list[str]:
 class ActionRequest(BaseModel):
     debug: bool = False
     action: str
-    kubeconfig: str = None
-    context: str = None
+
 
     def exec(self) -> dict:
         raise NotImplementedError()
@@ -47,10 +46,7 @@ class GefyraRequest(ActionRequest):
     @property
     def configuration(self):
         from gefyra.configuration import ClientConfiguration
-
-        return ClientConfiguration(
-            kube_config_file=self.kubeconfig, kube_context=self.context
-        )
+        return ClientConfiguration()
 
 
 class K8sRequest(ActionRequest):
