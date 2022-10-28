@@ -1,3 +1,4 @@
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -159,15 +160,4 @@ export class GefyraBridgeResponse extends GefyraResponse {
     this.version = obj.version;
     this.response = obj.response;
   }
-}
-
-
-// TODO Move somewhere else
-type GefyraRunInnerResponse = {
-	status: boolean; 
-}
-
-type GefyraBridgeInnerResponse = {
-  containers: string[],
-  bridges: string[]
 }
