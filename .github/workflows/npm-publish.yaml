@@ -22,7 +22,7 @@ jobs:
           npm run lint
           npm run test
       - uses: JS-DevTools/npm-publish@v1
-        working-directory: gefyra/
         with:
+          package: ./gefyra/package.json
           token: ${{ secrets.NPM_TOKEN }}
 
