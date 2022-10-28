@@ -34,7 +34,6 @@ class ActionRequest(BaseModel):
     debug: bool = False
     action: str
 
-
     def exec(self) -> dict:
         raise NotImplementedError()
 
@@ -46,6 +45,7 @@ class GefyraRequest(ActionRequest):
     @property
     def configuration(self):
         from gefyra.configuration import ClientConfiguration
+
         return ClientConfiguration()
 
 
