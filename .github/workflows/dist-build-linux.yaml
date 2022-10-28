@@ -10,8 +10,8 @@ on:
   push:
     tags:
       - '*'
-    release:
-      types: [ published ]
+  release:
+    types: [ published ]
 
 
 jobs:
