@@ -60,7 +60,7 @@ export class GefyraBridgeRequest extends GefyraRequest {
   namespace?: string;
   syncDownDirs?: string[];
   handleprobes?: boolean;
-  timeout?: Number;
+  timeout?: number;
 
   constructor() {
     super();
