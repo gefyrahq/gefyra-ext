@@ -78,9 +78,11 @@ export class GefyraHelpRequest extends GefyraRequest {
 // ===== APi Respones ====
 class GefyraResponse {
   status!: string;
-  success!: boolean;
-  host!: string;
-  user!: string;
+  success?: boolean;
+  host?: string;
+  user?: string;
+  apiVersion?: string;
+  version?: string;
 
   protected deserialize(res: string): any {
     const obj = JSON.parse(res);
@@ -93,8 +95,6 @@ class GefyraResponse {
 }
 
 export class GefyraStatusResponse extends GefyraResponse {
-  status!: string;
-
   constructor(res: string) {
     super();
     const obj = this.deserialize(res);
@@ -103,8 +103,6 @@ export class GefyraStatusResponse extends GefyraResponse {
 }
 
 export class GefyraUpResponse extends GefyraResponse {
-  status!: string;
-
   constructor(res: string) {
     super();
     const obj = this.deserialize(res);
@@ -113,8 +111,6 @@ export class GefyraUpResponse extends GefyraResponse {
 }
 
 export class GefyraDownResponse extends GefyraResponse {
-  status!: string;
-
   constructor(res: string) {
     super();
     const obj = this.deserialize(res);
@@ -123,11 +119,6 @@ export class GefyraDownResponse extends GefyraResponse {
 }
 
 export class GefyraRunResponse extends GefyraResponse {
-  status!: string;
-  host!: string;
-  user!: string;
-  apiVersion!: string;
-  version!: string;
   response!: GefyraRunInnerResponse; 
   
   constructor(res: string) {
@@ -143,11 +134,6 @@ export class GefyraRunResponse extends GefyraResponse {
 }
 
 export class GefyraBridgeResponse extends GefyraResponse {
-  status!: string;
-  host!: string;
-  user!: string;
-  apiVersion!: string;
-  version!: string;
   response!: GefyraBridgeInnerResponse; 
 
   constructor(res: string) {
