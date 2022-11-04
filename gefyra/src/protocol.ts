@@ -1,4 +1,4 @@
-import {GefyraRunInnerResponse, GefyraBridgeInnerResponse} from './types'
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -75,6 +75,75 @@ export class GefyraHelpRequest extends GefyraRequest {
   }
 }
 
+// ===== Docker Requests ====
+
+export class DockerListRequest extends GefyraRequest {
+  prefix?: string;
+  gefyra: boolean = true;
+  networkname: string = 'gefyra';
+  
+  constructor() {
+    super();
+    this.action = 'docker.list'
+  }
+}
+
+export class DockerKillRequest extends GefyraRequest {
+  name!: string;
+
+  constructor() {
+    super();
+    this.action = 'docker.kill'
+  }
+}
+
+export class DockerRemoveRequest extends GefyraRequest {
+  name!: string;
+  force?: boolean;
+
+  constructor() {
+    super();
+    this.action = 'docker.remove'
+  }
+}
+
+
+
+// ===== K8s Requests ====
+class K8sRequest {
+  action!: string;
+  kubeconfig?: string;
+  context?: string;
+}
+
+export class K8sContextRequest extends K8sRequest {
+  constructor() {
+    super();
+    this.action = 'k8s.contexts';
+  }  
+}
+
+export class K8sNamespaceRequest extends K8sRequest {
+  constructor() {
+    super();
+    this.action = 'k8s.namespaces'
+  }
+}
+
+export class K8sWorkloadsRequest extends K8sRequest {
+  constructor() {
+    super();
+    this.action = 'k8s.workloads'
+  }
+}
+
+export class K8sImagesRequest extends K8sRequest {
+  constructor() {
+    super();
+    this.action = 'k8s.workloads';
+  }
+}
+
 // ===== APi Respones ====
 class GefyraResponse {
   status!: string;
@@ -90,6 +159,8 @@ class GefyraResponse {
     this.success = obj.status === 'success';
     this.host = obj.host;
     this.user = obj.user;
+    this.version = obj.version
+    this.apiVersion = obj.apiVersion
     return obj.response;
   }
 }
@@ -124,11 +195,6 @@ export class GefyraRunResponse extends GefyraResponse {
   constructor(res: string) {
     super();
     const obj = this.deserialize(res)
-    this.status = obj.status;
-    this.host = obj.host;
-    this.user = obj.user;
-    this.apiVersion = obj.apiVersion;
-    this.version = obj.version;
     this.response = obj.response;
   }
 }
@@ -139,11 +205,66 @@ export class GefyraBridgeResponse extends GefyraResponse {
   constructor(res: string) {
     super();
     const obj = this.deserialize(res)
-    this.status = obj.status;
-    this.host = obj.host;
-    this.user = obj.user;
-    this.apiVersion = obj.apiVersion;
-    this.version = obj.version;
+    this.response = obj.response;
+  }
+}
+
+export class DockerListResponse extends GefyraResponse {
+  response!: DockerListInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
+    this.response = obj.response;
+  }
+}
+
+export class DockerKillRemoveResponse extends GefyraResponse {
+  response!: DockerKillRemoveInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
+    this.response = obj.response;
+  }
+}
+
+export class K8sContextResponse extends GefyraResponse {
+  response!: K8sContextInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
+    this.response = obj.response;
+  }
+}
+
+export class K8sNamespaceResponse extends GefyraResponse {
+  response!: K8sNamespaceInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
+    this.response = obj.response;
+  }
+}
+
+export class K8sWorkloadsResponse extends GefyraResponse {
+  response!: K8sWorkloadsInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
+    this.response = obj.response;
+  }
+}
+
+export class K8sImagesResponse extends GefyraResponse {
+  response!: K8sImagesInnerResponse;
+  
+  constructor(res: string) {
+    super();
+    const obj = this.deserialize(res)
     this.response = obj.response;
   }
 }
