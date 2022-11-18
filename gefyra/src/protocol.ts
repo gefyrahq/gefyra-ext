@@ -110,10 +110,14 @@ export class DockerRemoveRequest extends GefyraRequest {
 
 
 // ===== K8s Requests ====
-class K8sRequest {
+export class K8sRequest {
   action!: string;
   kubeconfig?: string;
   context?: string;
+
+  serialize(): string {
+    return JSON.stringify(this);
+  }
 }
 
 export class K8sContextRequest extends K8sRequest {
