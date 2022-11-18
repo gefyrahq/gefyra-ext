@@ -8,7 +8,7 @@ authors = ["Michael Schilonka <michael@blueshoe.io>"]
 python = "^3.9"
 pydantic = "^1.9.2"
 kubernetes = "^24.2.0"
-gefyra = "^0.12.0"
+gefyra = "^0.13.2"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
