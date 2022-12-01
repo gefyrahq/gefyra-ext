@@ -18,11 +18,11 @@ const supportedPlatforms = [
   },
   {
     TYPE: 'Darwin',
-    TARGET: 'x64'
+    TARGET: 'universal'
   },
   {
     TYPE: 'Windows_NT',
-    TARGET: 'x64'
+    TARGET: 'x86_64'
   },
 ];
 
@@ -43,7 +43,7 @@ const getPlatform = () => {
 };
 
 function filterRelease(release: any): boolean {
-  return release.name === '0.3.3';
+  return release.name === '0.3.4';
 }
 
 function filterAsset(asset: any) {
