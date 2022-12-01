@@ -27,12 +27,12 @@ jobs:
       with:
         python-version: '3.9'
     - name: Determine App Version
-      working-directory: client/
+      working-directory: json/
       run: |
         python ..\.github\scripts\get_version.py
         echo "${{ env.APP_VERSION }}"
     - name: Setup PyOxidizer and build
-      working-directory: client/
+      working-directory: json/
       run: |
         Invoke-WebRequest 'https://github.com/indygreg/PyOxidizer/releases/download/pyoxidizer%2F0.20.0/PyOxidizer-0.20.0-exe-x86_64-pc-windows.zip' -OutFile .\PyOxidizer-0.20.0-exe-x86_64-pc-windows.zip
         7z x PyOxidizer-0.20.0-exe-x86_64-pc-windows.zip
@@ -49,14 +49,14 @@ jobs:
       with:
         name: gefyra-json-${{ env.APP_VERSION }}-windows-x86_64
         path: |
-          client/dist/
+          json/dist/
         retention-days: 5
     - name: Create release zip
-      working-directory: client/
+      working-directory: json/
       if: ${{ github.event.release && github.event.action == 'published' }}
       run: 7z a -r gefyra-json-${{ env.APP_VERSION }}-windows-x86_64.zip "dist/"
     - name: Attach files to release
       uses: softprops/action-gh-release@v1
       if: ${{ github.event.release && github.event.action == 'published' }}
       with:
-        files: client/gefyra-json-${{ env.APP_VERSION }}-windows-x86_64.zip
+        files: json/gefyra-json-${{ env.APP_VERSION }}-windows-x86_64.zip
