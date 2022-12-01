@@ -50,6 +50,9 @@ class GefyraRequest(ActionRequest):
 
 
 class K8sRequest(ActionRequest):
+    kubeconfig: str = None 
+    context: str = None 
+
     def __init__(self, **data: Any):
         super().__init__(**data)
         self._load_kube_config()
