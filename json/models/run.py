@@ -9,7 +9,7 @@ class RunRequest(GefyraRequest):
     image: str
     name: str = None
     command: str = None
-    volumes: dict = None
+    volumes: list[str] = []
     ports: dict = None
     detach: bool = True
     autoremove: bool = False
