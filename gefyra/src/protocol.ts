@@ -18,7 +18,8 @@ export class GefyraStatusRequest extends GefyraRequest {
 }
 
 export class GefyraUpRequest extends GefyraRequest {
-  endpoint?: string;
+  host?: string;
+  port?: number;
   minikube?: boolean;
   kubeconfig?: string;
   context?: string;
