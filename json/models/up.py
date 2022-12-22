@@ -7,7 +7,8 @@ from . import add_action, GefyraRequest
 @add_action("gefyra.up")
 class UpRequest(GefyraRequest):
 
-    endpoint: str = None
+    host: str = None
+    port: int = None
     minikube: bool = False
     kubeconfig: str = None
     context: str = None
@@ -47,13 +48,15 @@ class UpRequest(GefyraRequest):
         if self.minikube:
             configuration_params.update(detect_minikube_config())
         else:
-            if not self.endpoint:
+            if not self.host and not self.port:
                 # try read the endpoint from Beiboot kubeconfig
                 endpoint = self._get_connection_from_kubeconfig()
+                if endpoint:
+                    configuration_params["cargo_endpoint_host"] = endpoint.split(":")[0]
+                    configuration_params["cargo_endpoint_port"] = endpoint.split(":")[1]
             else:
-                endpoint = self.endpoint
-
-            configuration_params["cargo_endpoint"] = endpoint
+                configuration_params["cargo_endpoint_host"] = self.host
+                configuration_params["cargo_endpoint_port"] = self.port
 
         configuration_params["kube_config_file"] = self.kubeconfig
         configuration_params["kube_context"] = self.context
