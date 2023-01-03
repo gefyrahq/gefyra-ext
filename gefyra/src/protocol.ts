@@ -147,7 +147,7 @@ export class K8sWorkloadsRequest extends K8sRequest {
 export class K8sImagesRequest extends K8sRequest {
   constructor() {
     super();
-    this.action = 'k8s.workloads';
+    this.action = 'k8s.images';
   }
 }
 
