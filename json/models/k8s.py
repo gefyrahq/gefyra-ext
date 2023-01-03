@@ -68,33 +68,53 @@ class K8sWorkloadsRequest(K8sRequest):
 
 @add_action("k8s.images")
 class K8sImagesRequest(K8sRequest):
-    workload: str
+    workload: str = None
     namespace: str
 
     def exec(self) -> dict:
         from kubernetes import client
 
-        app_api = client.AppsV1Api()
-        type, name = self.workload.split("/")
-        if type == "deployment":
-            _object = app_api.read_namespaced_deployment(
-                namespace=self.namespace, name=name
-            )
-        elif type == "statefulset":
-            _object = app_api.read_namespaced_stateful_set(
-                namespace=self.namespace, name=name
-            )
+        if self.workload:
+            app_api = client.AppsV1Api()
+            type, name = self.workload.split("/")
+            if type == "deployment":
+                _object = app_api.read_namespaced_deployment(
+                    namespace=self.namespace, name=name
+                )
+            elif type == "statefulset":
+                _object = app_api.read_namespaced_stateful_set(
+                    namespace=self.namespace, name=name
+                )
+            else:
+                raise RuntimeError(f"Workload type not supported: {type}")
+            containers = _object.spec.template.spec.containers
+            images = []
+            for container in containers:
+                images.append(
+                    {
+                        "image": container.image,
+                        "ports": [port.container_port for port in container.ports]
+                        if container.ports
+                        else [],
+                    }
+                )
+            return {"containers": images}
         else:
-            raise RuntimeError(f"Workload type not supported: {type}")
-        containers = _object.spec.template.spec.containers
-        images = []
-        for container in containers:
-            images.append(
-                {
-                    "image": container.image,
-                    "ports": [port.container_port for port in container.ports]
-                    if container.ports
-                    else [],
-                }
-            )
-        return {"containers": images}
+            core_api = client.CoreV1Api()
+            images = []
+            _img = set()
+            for pod in core_api.list_namespaced_pod(namespace=self.namespace).items:
+                for container in pod.spec.containers:
+                    if container.image not in _img:
+                        images.append(
+                            {
+                                "image": container.image,
+                                "ports": [
+                                    port.container_port for port in container.ports
+                                ]
+                                if container.ports
+                                else [],
+                            }
+                        )
+                        _img.add(container.image)
+            return {"containers": images}
