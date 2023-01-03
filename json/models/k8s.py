@@ -34,6 +34,7 @@ class K8sWorkloadsRequest(K8sRequest):
         from kubernetes import client
 
         app_api = client.AppsV1Api()
+        core_api = client.CoreV1Api()
         workloads = {}
         for deployment in app_api.list_deployment_for_all_namespaces().items:
             if deployment.metadata.namespace in workloads:
@@ -52,6 +53,16 @@ class K8sWorkloadsRequest(K8sRequest):
             else:
                 workloads[statefulset.metadata.namespace] = [
                     f"statefulset/{statefulset.metadata.name}"
+                ]
+                
+        for pod in core_api.list_pod_for_all_namespaces().items:
+            if pod.metadata.namespace in workloads:
+                workloads[pod.metadata.namespace].append(
+                    f"pod/{pod.metadata.name}"
+                )
+            else:
+                workloads[pod.metadata.namespace] = [
+                    f"pod/{pod.metadata.name}"
                 ]
 
         return {
