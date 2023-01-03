@@ -54,16 +54,12 @@ class K8sWorkloadsRequest(K8sRequest):
                 workloads[statefulset.metadata.namespace] = [
                     f"statefulset/{statefulset.metadata.name}"
                 ]
-                
+
         for pod in core_api.list_pod_for_all_namespaces().items:
             if pod.metadata.namespace in workloads:
-                workloads[pod.metadata.namespace].append(
-                    f"pod/{pod.metadata.name}"
-                )
+                workloads[pod.metadata.namespace].append(f"pod/{pod.metadata.name}")
             else:
-                workloads[pod.metadata.namespace] = [
-                    f"pod/{pod.metadata.name}"
-                ]
+                workloads[pod.metadata.namespace] = [f"pod/{pod.metadata.name}"]
 
         return {
             "workloads": workloads,
