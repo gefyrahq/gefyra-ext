@@ -2,8 +2,15 @@ import { unlinkSync } from 'fs';
 import { join } from 'path';
 import { InstallError } from '../errors';
 import { install, checkInstalled, binaryPath } from '../install';
+import { type } from 'os';
 
-const zipName = 'gefyra-0.3.2-linux-amd64.zip';
+const zipNameMap = {
+  'Linux': 'gefyra-0.13.4-linux-amd64.zip',
+  'Darwin': 'gefyra-0.13.4-darwin-universal.zip',
+  'Windows_NT': 'gefyra-0.13.4-windows-x86_64.zip'
+};
+const platform = type();
+const zipName = zipNameMap[platform];
 const outputDir = join(__dirname, '..');
 const zipPath = join(outputDir, zipName);
 

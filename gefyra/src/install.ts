@@ -43,7 +43,7 @@ const getPlatform = () => {
 };
 
 function filterRelease(release: any): boolean {
-  return release.name === '0.3.4';
+  return release.name === '0.3.5';
 }
 
 function filterAsset(asset: any) {
