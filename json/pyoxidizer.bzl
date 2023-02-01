@@ -44,6 +44,7 @@ def make_exe():
     exe.add_python_resources(exe.pip_install(["tabulate"]))
     exe.add_python_resources(exe.pip_install(["gefyra"]))
     exe.add_python_resources(exe.pip_install(["cli-tracker"]))
+    exe.add_python_resources(exe.pip_install(["chardet"]))
     return exe
 
 def make_win_exe():
@@ -82,6 +83,7 @@ def make_win_exe():
     exe.add_python_resources(exe.pip_install(["pywin32"]))
     exe.add_python_resources(exe.pip_install(["tabulate"]))
     exe.add_python_resources(exe.pip_install(["cli-tracker"]))
+    exe.add_python_resources(exe.pip_install(["chardet"]))
     exe.windows_runtime_dlls_mode = "always"
     return exe
 
