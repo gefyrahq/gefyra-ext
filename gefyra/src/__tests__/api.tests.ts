@@ -14,6 +14,7 @@ beforeAll(async () => {
 
 test('Gefyra Status', async () => {
   let status = await gefyraClient.status();
+  console.log(status);
   expect(status).toBeInstanceOf(GefyraStatusResponse);
   expect(status.status).toEqual('up');
 });
