@@ -10,6 +10,7 @@ const user = 'gefyrahq';
 const repo = 'gefyra-ext';
 const binaryName = 'gefyra-json';
 const outputDir = __dirname;
+const releaseName = require('../package.json').version;
 export const binaryPath = join(outputDir, binaryName);
 const supportedPlatforms = [
   {
@@ -43,7 +44,7 @@ const getPlatform = () => {
 };
 
 function filterRelease(release: any): boolean {
-  return release.name === '0.3.4';
+  return release.name === releaseName;
 }
 
 function filterAsset(asset: any) {
