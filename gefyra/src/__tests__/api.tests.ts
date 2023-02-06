@@ -17,7 +17,6 @@ test('Gefyra Status', async () => {
     console.error(err);
     throw Error('Gefyra Status Error')
   });
-  console.log(statusResponse);
   expect(statusResponse).toBeInstanceOf(GefyraStatusResponse);
   expect(statusResponse.status).toEqual('success');
   expect(statusResponse.response.cluster.connected).toEqual(true);

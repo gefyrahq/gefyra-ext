@@ -1,4 +1,4 @@
-import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse} from './types'
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraInnterStatusResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -173,9 +173,11 @@ class GefyraResponse {
 }
 
 export class GefyraStatusResponse extends GefyraResponse {
+  response!: GefyraInnterStatusResponse; 
   constructor(res: string) {
     super();
-    this.deserialize(res);
+    const obj = this.deserialize(res);
+    this.response = obj.response;
   }
 }
 

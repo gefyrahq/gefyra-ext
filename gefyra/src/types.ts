@@ -1,6 +1,29 @@
+export type GefyraInnterStatusResponse = {
+  summary: string,
+  cluster: {
+    connected: boolean,
+    operator: boolean,
+    operator_image: string,
+    stowaway: boolean, 
+    stowaway_image: string, 
+    namespace: boolean
+}, 
+client: { 
+  version: string, 
+  cargo: boolean, 
+  cargo_image: string, 
+  network: boolean, 
+  connection: boolean, 
+  containers: number, 
+  bridges: number, 
+  kubeconfig: string, 
+  context: string, 
+  cargo_endpoint: string
+}
+}
 
 export type GefyraRunInnerResponse = {
-	status: boolean; 
+  status: boolean;
 }
 
 export type GefyraBridgeInnerResponse = {
@@ -44,6 +67,6 @@ type K8sContainers = {
   ports: number[],
 }
 
-export type K8sImagesInnerResponse =  {
+export type K8sImagesInnerResponse = {
   containers: K8sContainers[],
 }
