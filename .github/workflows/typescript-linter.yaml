@@ -3,8 +3,16 @@ name: Lint and test typescript binding
 on:
   push:
     branches: [ main ]
+    tags-ignore:
+      - "0.*"
+      - "1.*"
   pull_request:
     branches: [ main ]
+  workflow_run:
+    workflows: ["Build Linux binary", "Build OSX binary"]
+    branches: [ main ]
+    types: 
+      - completed
 
 jobs:
   test:
