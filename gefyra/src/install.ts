@@ -1,6 +1,8 @@
 import { type, arch } from 'os';
 import { chmodSync, existsSync } from 'fs';
 import { join } from 'path';
+import gefyraPackage = require('../package.json');
+
 
 import downloadRelease = require('download-github-release');
 
@@ -10,7 +12,6 @@ const user = 'gefyrahq';
 const repo = 'gefyra-ext';
 const binaryName = 'gefyra-json';
 const outputDir = __dirname;
-const releaseName = require('../package.json').version;
 export const binaryPath = join(outputDir, binaryName);
 const supportedPlatforms = [
   {
@@ -44,7 +45,7 @@ const getPlatform = () => {
 };
 
 function filterRelease(release: any): boolean {
-  return release.name === releaseName;
+  return release.name === gefyraPackage.version;
 }
 
 function filterAsset(asset: any) {
