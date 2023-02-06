@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gefyra-json"
-version = "0.3.9"
+version = "0.4.0"
 description = ""
 authors = ["Michael Schilonka <michael@blueshoe.io>"]
 
