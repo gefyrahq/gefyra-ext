@@ -6,6 +6,7 @@ export abstract class GefyraBaseClient {
   async status(): Promise<proto.GefyraStatusResponse> {
     const stdout = this.exec(new proto.GefyraStatusRequest());
     const resp = await stdout;
+    /* tslint:disable-next-line */
     console.log(resp);
     return new proto.GefyraStatusResponse(resp);
   }
