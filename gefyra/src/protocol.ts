@@ -158,7 +158,8 @@ class GefyraResponse {
   host?: string;
   user?: string;
   apiVersion?: string;
-  version?: string;
+  version?: string
+  response?: any;
 
   protected deserialize(res: string): any {
     const obj = JSON.parse(res);
@@ -168,17 +169,15 @@ class GefyraResponse {
     this.user = obj.user;
     this.version = obj.version
     this.apiVersion = obj.apiVersion
-    return obj.response;
+    if (obj.response) {
+      this.response = obj.response;
+    }
+    return obj;
   }
 }
 
 export class GefyraStatusResponse extends GefyraResponse {
   response!: GefyraInnterStatusResponse; 
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res);
-    this.response = obj;
-  }
 }
 
 export class GefyraUpResponse extends GefyraResponse {
@@ -199,12 +198,6 @@ export class GefyraDownResponse extends GefyraResponse {
 
 export class GefyraRunResponse extends GefyraResponse {
   response!: GefyraRunInnerResponse; 
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class GefyraBridgeResponse extends GefyraResponse {
@@ -219,60 +212,24 @@ export class GefyraBridgeResponse extends GefyraResponse {
 
 export class DockerListResponse extends GefyraResponse {
   response!: DockerListInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class DockerKillRemoveResponse extends GefyraResponse {
   response!: DockerKillRemoveInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class K8sContextResponse extends GefyraResponse {
   response!: K8sContextInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class K8sNamespaceResponse extends GefyraResponse {
   response!: K8sNamespaceInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class K8sWorkloadsResponse extends GefyraResponse {
   response!: K8sWorkloadsInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
 
 export class K8sImagesResponse extends GefyraResponse {
   response!: K8sImagesInnerResponse;
-  
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res)
-    this.response = obj.response;
-  }
 }
