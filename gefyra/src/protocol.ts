@@ -172,13 +172,7 @@ class GefyraResponse {
   }
 }
 
-export class GefyraStatusResponse extends GefyraResponse {
-  constructor(res: string) {
-    super();
-    const obj = this.deserialize(res);
-    this.status = obj.status;
-  }
-}
+export class GefyraStatusResponse extends GefyraResponse {}
 
 export class GefyraUpResponse extends GefyraResponse {
   constructor(res: string) {
