@@ -14,6 +14,10 @@ jobs:
     - name: Install Node packages
       working-directory: gefyra/
       run: npm ci
+    - name: Lint
+      working-directory: gefyra/
+      run: |
+        npm run lint
     - uses: AbsaOSS/k3d-action@v2
       name: Create Single Cluster
       with:
@@ -22,8 +26,7 @@ jobs:
           --agents 1
           -p "31820:31820/UDP@agent:0"
           --image docker.io/rancher/k3s:v1.25.6-k3s1
-    - name: Lint and test
+    - name: Test
       working-directory: gefyra/
       run: |
-        npm run lint
         npm run test
