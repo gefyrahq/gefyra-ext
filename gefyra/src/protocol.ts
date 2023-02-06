@@ -161,6 +161,10 @@ class GefyraResponse {
   version?: string
   response?: any;
 
+  constructor(res: string) {
+    this.deserialize(res);
+  }
+
   protected deserialize(res: string): any {
     const obj = JSON.parse(res);
     this.status = obj.status;
@@ -182,7 +186,7 @@ export class GefyraStatusResponse extends GefyraResponse {
 
 export class GefyraUpResponse extends GefyraResponse {
   constructor(res: string) {
-    super();
+    super(res);
     const obj = this.deserialize(res);
     this.status = obj.status;
   }
@@ -190,21 +194,21 @@ export class GefyraUpResponse extends GefyraResponse {
 
 export class GefyraDownResponse extends GefyraResponse {
   constructor(res: string) {
-    super();
+    super(res);
     const obj = this.deserialize(res);
     this.status = obj.status;
   }
 }
 
 export class GefyraRunResponse extends GefyraResponse {
-  response!: GefyraRunInnerResponse; 
+  response!: GefyraRunInnerResponse;  
 }
 
 export class GefyraBridgeResponse extends GefyraResponse {
   response!: GefyraBridgeInnerResponse; 
 
   constructor(res: string) {
-    super();
+    super(res);
     const obj = this.deserialize(res)
     this.response = obj.response;
   }
