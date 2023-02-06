@@ -13,8 +13,11 @@ beforeAll(async () => {
 // });
 
 test('Gefyra Status', async () => {
-  let status = await gefyraClient.status();
-  console.log(status);
-  expect(status).toBeInstanceOf(GefyraStatusResponse);
-  expect(status.status).toEqual('up');
+  let statusResponse = await gefyraClient.status().catch((err) => {
+    console.error(err);
+    throw Error('Gefyra Status Error')
+  });
+  expect(statusResponse).toBeInstanceOf(GefyraStatusResponse);
+  expect(statusResponse.status).toEqual('up');
+  
 });
