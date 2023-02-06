@@ -1,7 +1,6 @@
 import { type, arch } from 'os';
 import { chmodSync, existsSync } from 'fs';
 import { join } from 'path';
-import gefyraPackage = require('../package.json');
 
 
 import downloadRelease = require('download-github-release');
@@ -12,6 +11,8 @@ const user = 'gefyrahq';
 const repo = 'gefyra-ext';
 const binaryName = 'gefyra-json';
 const outputDir = __dirname;
+/* tslint:disable-next-line */
+const gefyraPackage = require('../package.json');
 export const binaryPath = join(outputDir, binaryName);
 const supportedPlatforms = [
   {
