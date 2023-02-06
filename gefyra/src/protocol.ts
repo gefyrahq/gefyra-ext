@@ -168,6 +168,7 @@ class GefyraResponse {
     this.user = obj.user;
     this.version = obj.version
     this.apiVersion = obj.apiVersion
+    /* tslint:disable:no-console */
     console.log(obj);
     return obj.response;
   }
