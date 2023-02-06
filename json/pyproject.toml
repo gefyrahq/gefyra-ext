@@ -7,7 +7,7 @@ authors = ["Michael Schilonka <michael@blueshoe.io>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 pydantic = "^1.9.2"
-kubernetes = "^24.2.0"
+kubernetes = "^25.3.0"
 gefyra = "^1.0.2"
 
 [tool.poetry.dev-dependencies]
