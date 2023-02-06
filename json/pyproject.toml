@@ -12,7 +12,7 @@ gefyra = "^1.0.2"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
-flake8 = "^5.0.4"
+flake8 = "^6.0.0"
 flake8-black = "^0.3.3"
 
 [build-system]
