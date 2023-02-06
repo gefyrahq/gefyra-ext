@@ -168,8 +168,6 @@ class GefyraResponse {
     this.user = obj.user;
     this.version = obj.version
     this.apiVersion = obj.apiVersion
-    /* tslint:disable:no-console */
-    console.log(obj);
     return obj.response;
   }
 }
@@ -179,7 +177,7 @@ export class GefyraStatusResponse extends GefyraResponse {
   constructor(res: string) {
     super();
     const obj = this.deserialize(res);
-    this.response = obj.response;
+    this.response = obj;
   }
 }
 
