@@ -9,7 +9,7 @@ import gefyra.configuration
 
 from models import select_model, get_all_actions
 
-__VERSION__ = "0.4.2"
+__VERSION__ = "0.4.3"
 
 
 def main():
