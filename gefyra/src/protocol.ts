@@ -43,7 +43,7 @@ export class GefyraRunRequest extends GefyraRequest {
   command?: string;
   // volumes and ports are tbd
   volumes?: string[];
-  ports?: string[];
+  ports?: { [key: string]: string };
   detach?: boolean;
   autoremove?: boolean;
   namespace?: string;
@@ -58,7 +58,7 @@ export class GefyraRunRequest extends GefyraRequest {
 
 export class GefyraBridgeRequest extends GefyraRequest {
   name!: string;
-  ports!: string[];
+  ports?: { [key: string]: string };
   target!: string;
   namespace?: string;
   syncDownDirs?: string[];
