@@ -14,7 +14,8 @@ def set_version(part: str):
         subprocess.run(
             [
                 "sed",
-                "-i=''",
+                "-i",
+                "",
                 "-e",
                 f's/__VERSION__ = "[^"]*"/__VERSION__ = "{version}"/g',
                 "main.py",
