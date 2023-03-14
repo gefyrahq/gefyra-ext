@@ -30,9 +30,19 @@ def get_all_actions() -> list[str]:
     return list(__ACTIONS__.keys())
 
 
+class SentryContext(BaseModel):
+    dsn: str = "https://11cee47c7bdd4a2a91e211b2119cb8fb@sentry.unikube.io/6"
+    user: str = None
+    release: str = None
+    environment: str = None
+    server_name: str = None
+    debug: bool = False
+
+
 class ActionRequest(BaseModel):
     debug: bool = False
     action: str
+    sentryCtx: SentryContext = SentryContext()
 
     def exec(self) -> dict:
         raise NotImplementedError()
