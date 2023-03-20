@@ -118,3 +118,12 @@ class K8sImagesRequest(K8sRequest):
                         )
                         _img.add(container.image)
             return {"containers": images}
+
+@add_action("k8s.defaultKubeconfig")
+class K8sDefaultKubeconfigRequest(K8sRequest):
+
+    def exec(self) -> str:
+        # return default kubeconfig path
+        from kubernetes.config import kube_config 
+        from os.path import expanduser
+        return expanduser(kube_config.KUBE_CONFIG_DEFAULT_LOCATION)

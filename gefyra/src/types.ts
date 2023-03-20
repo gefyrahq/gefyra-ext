@@ -70,3 +70,8 @@ type K8sContainers = {
 export type K8sImagesInnerResponse = {
   containers: K8sContainers[],
 }
+
+
+export type K8sDefaultKubeconfigInnerResponse = {
+  kubeconfig: string,
+}
