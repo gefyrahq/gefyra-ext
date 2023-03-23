@@ -1,6 +1,6 @@
 {
   "name": "gefyra",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A JS binding for Gefyra. Providing additional helpers for Dev tool extensions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
