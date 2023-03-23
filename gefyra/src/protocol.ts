@@ -1,4 +1,4 @@
-import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraInnterStatusResponse} from './types'
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraInnterStatusResponse, K8sDefaultKubeconfigInnerResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -151,6 +151,13 @@ export class K8sImagesRequest extends K8sRequest {
   }
 }
 
+export class K8sDefaultKubeconfigRequest extends K8sRequest {
+  constructor() {
+    super();
+    this.action = 'k8s.defaultKubeconfig';
+  }
+}
+
 // ===== APi Respones ====
 class GefyraResponse {
   status!: string;
@@ -236,4 +243,8 @@ export class K8sWorkloadsResponse extends GefyraResponse {
 
 export class K8sImagesResponse extends GefyraResponse {
   response!: K8sImagesInnerResponse;
+}
+
+export class K8sDefaultKubeconfigResponse extends GefyraResponse {
+  response!: K8sDefaultKubeconfigInnerResponse;
 }
