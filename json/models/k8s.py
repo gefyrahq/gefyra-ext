@@ -120,7 +120,7 @@ class K8sImagesRequest(K8sRequest):
             return {"containers": images}
 
 
-@add_action("k8s.defaultKubeconfig")
+@add_action("k8s.default_kubeconfig")
 class K8sDefaultKubeconfigRequest(K8sRequest):
     def exec(self) -> str:
         # return default kubeconfig path

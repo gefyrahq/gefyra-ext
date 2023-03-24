@@ -154,7 +154,7 @@ export class K8sImagesRequest extends K8sRequest {
 export class K8sDefaultKubeconfigRequest extends K8sRequest {
   constructor() {
     super();
-    this.action = 'k8s.defaultKubeconfig';
+    this.action = 'k8s.default_kubeconfig';
   }
 }
 
