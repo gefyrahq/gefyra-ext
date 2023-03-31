@@ -1,4 +1,4 @@
-import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraInnterStatusResponse, K8sDefaultKubeconfigInnerResponse} from './types'
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraStatusInnerResponse, K8sDefaultKubeconfigInnerResponse, GefyraListInnerResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -75,6 +75,13 @@ export class GefyraHelpRequest extends GefyraRequest {
   constructor() {
     super();
     this.action = 'help';
+  }
+}
+
+export class GefyraListRequest extends GefyraRequest {
+  constructor() {
+    super();
+    this.action = 'gefyra.list';
   }
 }
 
@@ -188,7 +195,7 @@ class GefyraResponse {
 }
 
 export class GefyraStatusResponse extends GefyraResponse {
-  response!: GefyraInnterStatusResponse; 
+  response!: GefyraStatusInnerResponse; 
 }
 
 export class GefyraUpResponse extends GefyraResponse {
@@ -220,6 +227,11 @@ export class GefyraBridgeResponse extends GefyraResponse {
     this.response = obj.response;
   }
 }
+
+export class GefyraListResponse extends GefyraResponse {
+  response!: GefyraListInnerResponse;
+}
+
 
 export class DockerListResponse extends GefyraResponse {
   response!: DockerListInnerResponse;
