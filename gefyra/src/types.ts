@@ -1,4 +1,4 @@
-export type GefyraInnterStatusResponse = {
+export type GefyraStatusInnerResponse = {
   summary: string,
   cluster: {
     connected: boolean,
@@ -20,6 +20,11 @@ client: {
   context: string, 
   cargo_endpoint: string
 }
+}
+
+export type GefyraListInnerResponse = {
+  containers: [],
+  bridges: []
 }
 
 export type GefyraRunInnerResponse = {
