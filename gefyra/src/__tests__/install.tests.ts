@@ -1,18 +1,13 @@
 import { unlinkSync } from 'fs';
-import { join } from 'path';
-import { InstallError } from '../errors';
 import { install, checkInstalled, binaryPath } from '../install';
 
-const zipName = 'gefyra-0.3.2-linux-amd64.zip';
-const outputDir = join(__dirname, '..');
-const zipPath = join(outputDir, zipName);
 
 export function cleanBinary(): any {
   try {
     unlinkSync(binaryPath);
   } catch (err) {}
   try {
-    unlinkSync(zipPath);
+    unlinkSync(binaryPath);
   } catch (err) {}
 }
 
