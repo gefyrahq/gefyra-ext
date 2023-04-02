@@ -36,6 +36,10 @@ export type GefyraBridgeInnerResponse = {
   bridges: string[]
 }
 
+export type GefyraUnbridgeInnerResponse = {
+  status: boolean
+}
+
 export type DockerListInnerResponse = {
   containers: {
     name: string,

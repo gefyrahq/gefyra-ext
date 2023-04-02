@@ -1,4 +1,4 @@
-import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraStatusInnerResponse, K8sDefaultKubeconfigInnerResponse, GefyraListInnerResponse} from './types'
+import {GefyraRunInnerResponse, GefyraBridgeInnerResponse, DockerListInnerResponse, DockerKillRemoveInnerResponse, K8sContextInnerResponse, K8sNamespaceInnerResponse, K8sWorkloadsInnerResponse, K8sImagesInnerResponse, GefyraStatusInnerResponse, K8sDefaultKubeconfigInnerResponse, GefyraListInnerResponse, GefyraUnbridgeInnerResponse} from './types'
 /* tslint:disable:max-classes-per-file */
 // ===== API Requests ====
 
@@ -68,6 +68,14 @@ export class GefyraBridgeRequest extends GefyraRequest {
   constructor() {
     super();
     this.action = 'gefyra.bridge'
+  }
+}
+
+export class GefyraUnbridgeRequest extends GefyraRequest {
+  name!: string;
+  constructor() {
+    super();
+    this.action = 'gefyra.unbridge'
   }
 }
 
@@ -216,6 +224,10 @@ export class GefyraDownResponse extends GefyraResponse {
 
 export class GefyraRunResponse extends GefyraResponse {
   response!: GefyraRunInnerResponse;  
+}
+
+export class GefyraUnbridgeResponse extends GefyraResponse {
+  response!: GefyraUnbridgeInnerResponse;  
 }
 
 export class GefyraBridgeResponse extends GefyraResponse {
