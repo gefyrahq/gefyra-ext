@@ -1,14 +1,13 @@
-export type GefyraStatusInnerResponse = {
-  summary: string,
-  cluster: {
-    connected: boolean,
-    operator: boolean,
-    operator_image: string,
-    stowaway: boolean, 
-    stowaway_image: string, 
-    namespace: boolean
-}, 
-client: { 
+export type GefyraClusterStatus = {
+  connected: boolean,
+  operator: boolean,
+  operator_image: string,
+  stowaway: boolean, 
+  stowaway_image: string, 
+  namespace: boolean
+}
+
+export type GefyraClientStatus = { 
   version: string, 
   cargo: boolean, 
   cargo_image: string, 
@@ -20,6 +19,11 @@ client: {
   context: string, 
   cargo_endpoint: string
 }
+
+export type GefyraStatusInnerResponse = {
+  summary: string,
+  cluster: GefyraClusterStatus, 
+  client: GefyraClientStatus
 }
 
 export type GefyraListInnerResponse = {
