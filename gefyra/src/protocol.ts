@@ -174,7 +174,7 @@ export class K8sDefaultKubeconfigRequest extends K8sRequest {
 }
 
 // ===== APi Respones ====
-class GefyraResponse {
+export class GefyraResponse {
   status!: string;
   success?: boolean;
   host?: string;
