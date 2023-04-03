@@ -75,8 +75,8 @@ export abstract class GefyraBaseClient {
     return new K8sContextResponse(resp);
   }
 
-  async k8sNamespaces(): Promise<K8sNamespaceResponse> {
-    const stdout = this.exec(new K8sNamespaceRequest());
+  async k8sNamespaces(request: K8sNamespaceRequest): Promise<K8sNamespaceResponse> {
+    const stdout = this.exec(request);
     const resp = await stdout;
     return new K8sNamespaceResponse(resp);
   }
