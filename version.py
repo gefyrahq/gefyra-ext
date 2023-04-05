@@ -25,8 +25,7 @@ def set_version(part: str):
         subprocess.run(
             [
                 "sed",
-                "-i,"
-                f's/__VERSION__ = "[^"]*"/__VERSION__ = "{version}"/g',
+                "-i," f's/__VERSION__ = "[^"]*"/__VERSION__ = "{version}"/g',
                 "main.py",
             ]
         )
@@ -41,5 +40,4 @@ if __name__ == "__main__":
         print("Only major, minor, patch is allowed as argument")
         exit(1)
     else:
-
         set_version(sys.argv[1])

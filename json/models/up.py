@@ -6,7 +6,6 @@ from . import add_action, GefyraRequest
 
 @add_action("gefyra.up")
 class UpRequest(GefyraRequest):
-
     host: str = None
     port: int = None
     minikube: bool = False

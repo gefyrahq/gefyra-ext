@@ -5,7 +5,6 @@ from . import add_action, GefyraRequest
 
 @add_action("gefyra.bridge")
 class BridgeRequest(GefyraRequest):
-
     name: str
     ports: dict
     target: str

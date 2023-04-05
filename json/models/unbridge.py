@@ -5,7 +5,6 @@ from . import add_action, GefyraRequest
 
 @add_action("gefyra.unbridge")
 class UnbridgeRequest(GefyraRequest):
-
     name: str
 
     def __init__(self, **data: Any):

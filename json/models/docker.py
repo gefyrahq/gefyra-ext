@@ -3,7 +3,6 @@ from . import add_action, DockerRequest
 
 @add_action("docker.list")
 class DockerListRequest(DockerRequest):
-
     prefix: str = None
     gefyra: bool = True  # list only containers from the gefyra network
     networkname: str = "gefyra"
@@ -36,7 +35,6 @@ class DockerListRequest(DockerRequest):
 
 @add_action("docker.kill")
 class DockerKillRequest(DockerRequest):
-
     name: str
 
     def exec(self) -> dict:
@@ -47,7 +45,6 @@ class DockerKillRequest(DockerRequest):
 
 @add_action("docker.remove")
 class DockerRemoveRequest(DockerRequest):
-
     name: str
     force: bool = None
 
