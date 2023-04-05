@@ -5,7 +5,6 @@ from . import add_action, GefyraRequest
 
 @add_action("gefyra.run")
 class RunRequest(GefyraRequest):
-
     image: str
     name: str = None
     command: str = None
