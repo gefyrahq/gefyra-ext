@@ -69,8 +69,8 @@ export abstract class GefyraBaseClient {
     return new DockerKillRemoveResponse(resp);
   }
 
-  async k8sContexts(): Promise<K8sContextResponse> {
-    const stdout = this.exec(new K8sContextRequest());
+  async k8sContexts(request: K8sContextRequest): Promise<K8sContextResponse> {
+    const stdout = this.exec(request);
     const resp = await stdout;
     return new K8sContextResponse(resp);
   }

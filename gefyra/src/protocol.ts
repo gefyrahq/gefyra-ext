@@ -23,6 +23,12 @@ export class GefyraUpRequest extends GefyraRequest {
   minikube?: boolean;
   kubeconfig?: string;
   context?: string;
+  operatorImage?: string;
+  stowawayImage?: string;
+  carrierImage?: string;
+  cargoImage?: string;
+  registryUrl?: string;
+  wireguardMTU?: string;
 
   constructor() {
     super();
@@ -61,7 +67,7 @@ export class GefyraBridgeRequest extends GefyraRequest {
   ports?: { [key: string]: string };
   target!: string;
   namespace?: string;
-  syncDownDirs?: string[];
+  syncdowndirs?: string[];
   handleprobes?: boolean;
   timeout?: number;
 
