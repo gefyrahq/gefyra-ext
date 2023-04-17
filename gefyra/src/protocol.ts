@@ -23,12 +23,12 @@ export class GefyraUpRequest extends GefyraRequest {
   minikube?: boolean;
   kubeconfig?: string;
   context?: string;
-  operator_image_url?: string;
-  stowaway_image_url?: string;
-  carrier_image_url?: string;
-  cargo_image_url?: string;
-  registry_url?: string;
-  wireguard_mtu?: string;
+  operatorImage?: string;
+  stowawayImage?: string;
+  carrierImage?: string;
+  cargoImage?: string;
+  registryUrl?: string;
+  wireguardMTU?: string;
 
   constructor() {
     super();

@@ -66,17 +66,17 @@ class UpRequest(GefyraRequest):
         configuration_params["kube_config_file"] = self.kubeconfig
         configuration_params["kube_context"] = self.context
 
-        advanced_options = [
-            "operator_image_url",
-            "stowaway_image_url",
-            "carrier_image_url",
-            "cargo_image_url",
-            "registry_url",
-            "wireguard_mtu",
-        ]
-        for option in advanced_options:
+        advanced_options = {
+            "operatorImage": "operator_image_url",
+            "stowawayImage": "stowaway_image_url",
+            "carrierImage": "carrier_image_url",
+            "cargoImage": "cargo_image_url",
+            "registryUrl": "registry_url",
+            "wireguardMTU": "wireguard_mtu",
+        }
+        for option in advanced_options.keys():
             if getattr(self, option) is not None:
-                configuration_params[option] = getattr(self, option)
+                configuration_params[advanced_options[option]] = getattr(self, advanced_options[option])
 
         # we currently don't support all configuration cases
         return ClientConfiguration(**configuration_params)
