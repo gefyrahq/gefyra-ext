@@ -16,7 +16,7 @@ jobs:
       - name: Install Node packages
         working-directory: gefyra/
         run: npm ci
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v2
         with:
           package: ./gefyra/package.json
           token: ${{ secrets.NPM_TOKEN }}
