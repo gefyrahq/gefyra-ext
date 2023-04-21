@@ -11,10 +11,10 @@ class UpRequest(GefyraRequest):
     minikube: bool = False
     kubeconfig: str = None
     context: str = None
-    operatorImageUrl: str = None
-    stowawayImageUrl: str = None
-    carrierImageUrl: str = None
-    cargoImageUrl: str = None
+    operatorImage: str = None
+    stowawayImage: str = None
+    carrierImage: str = None
+    cargoImage: str = None
     registryUrl: str = None
     wireguardMTU: str = None
 
