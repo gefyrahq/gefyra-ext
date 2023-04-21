@@ -11,12 +11,12 @@ class UpRequest(GefyraRequest):
     minikube: bool = False
     kubeconfig: str = None
     context: str = None
-    operator_image_url: str = None
-    stowaway_image_url: str = None
-    carrier_image_url: str = None
-    cargo_image_url: str = None
-    registry_url: str = None
-    wireguard_mtu: str = None
+    operatorImageUrl: str = None
+    stowawayImageUrl: str = None
+    carrierImageUrl: str = None
+    cargoImageUrl: str = None
+    registryUrl: str = None
+    wireguardMTU: str = None
 
     def __init__(self, **data: Any):
         super().__init__(**data)
@@ -77,7 +77,7 @@ class UpRequest(GefyraRequest):
         for option in advanced_options.keys():
             if getattr(self, option) is not None:
                 configuration_params[advanced_options[option]] = getattr(
-                    self, advanced_options[option]
+                    self, option
                 )
 
         # we currently don't support all configuration cases
