@@ -76,9 +76,7 @@ class UpRequest(GefyraRequest):
         }
         for option in advanced_options.keys():
             if getattr(self, option) is not None:
-                configuration_params[advanced_options[option]] = getattr(
-                    self, option
-                )
+                configuration_params[advanced_options[option]] = getattr(self, option)
 
         # we currently don't support all configuration cases
         return ClientConfiguration(**configuration_params)
