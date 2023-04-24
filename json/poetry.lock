@@ -261,14 +261,14 @@ develop = ["build", "twine"]
 
 [[package]]
 name = "gefyra"
-version = "1.0.4"
+version = "1.0.5"
 description = "Gefyra runs all developer machine side components of Gefyra's Kubernetes-based development infrastructure"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "gefyra-1.0.4-py3-none-any.whl", hash = "sha256:fce419098d4f077d5400053299beb3e333b65789da3434a392b4a1a59dc0c57a"},
-    {file = "gefyra-1.0.4.tar.gz", hash = "sha256:f6d4582a23feb5d5ca6d8e1279296a140222323b74aa76dd1007daad4cae42e6"},
+    {file = "gefyra-1.0.5-py3-none-any.whl", hash = "sha256:2d93eef739abb0d0d0910d7f6888abed375e8f4e6d98be724c2e76976e5c121c"},
+    {file = "gefyra-1.0.5.tar.gz", hash = "sha256:010198d22c26d83d68a47daeeca1d364ece87f57e54e40f4ea37a07128741eca"},
 ]
 
 [package.dependencies]
@@ -818,4 +818,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6dc86abf50229e2d3370cd45706c788fed8db2ae9efc05d0c1215c6bbb860207"
+content-hash = "0a41a1c9c8d7cd518636e45d3c3c16c2282871ad65d8aa09193cc6e429a5e9a4"
