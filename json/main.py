@@ -11,7 +11,7 @@ import gefyra.configuration
 
 from models import SentryContext, select_model, get_all_actions
 
-__VERSION__ = "0.7.13"
+__VERSION__ = "0.7.14"
 
 
 def main():
