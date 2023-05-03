@@ -38,7 +38,7 @@ def make_exe():
 
     # linux, mac
     exe.add_python_resources(exe.read_package_root(CWD, ["main", "models"]))
-    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==5.0.3"]))
+    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==6.0.1"]))
     exe.add_python_resources(exe.pip_install(["--no-binary", "pydantic", "pydantic"]))
     exe.add_python_resources(exe.pip_install(["kubernetes"]))
     exe.add_python_resources(exe.pip_install(["tabulate"]))
@@ -78,7 +78,7 @@ def make_win_exe():
 
     # windows
     exe.add_python_resources(exe.read_package_root(CWD, ["main", "models"]))
-    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==5.0.3"]))
+    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==6.0.1"]))
     exe.add_python_resources(exe.pip_install(["--no-binary", "pydantic", "pydantic"]))
     exe.add_python_resources(exe.pip_install(["kubernetes"]))
     exe.add_python_resources(exe.pip_install(["gefyra"]))
