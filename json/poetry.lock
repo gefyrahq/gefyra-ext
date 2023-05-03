@@ -275,14 +275,14 @@ develop = ["build", "twine"]
 
 [[package]]
 name = "gefyra"
-version = "1.0.7"
+version = "1.0.8"
 description = "Gefyra runs all developer machine side components of Gefyra's Kubernetes-based development infrastructure"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "gefyra-1.0.7-py3-none-any.whl", hash = "sha256:11750642e9a7b9d4f806108023837c6c87f49eaa7bdcbe9fc26aeb926a11a610"},
-    {file = "gefyra-1.0.7.tar.gz", hash = "sha256:0b1613906f8f650acce6ebb8029ebfd1f5a8985370426402cc94aaa63a3125f2"},
+    {file = "gefyra-1.0.8-py3-none-any.whl", hash = "sha256:1e0cd5187facb4e8bf404b007757811095bbadc37ae843447fc762f5d6ac41b6"},
+    {file = "gefyra-1.0.8.tar.gz", hash = "sha256:b8f724db1080cb0a891ea04686751a355b41888666b0d5f301ee629670b67689"},
 ]
 
 [package.dependencies]
