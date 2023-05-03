@@ -31,7 +31,7 @@ def get_all_actions() -> list[str]:
 
 
 class SentryContext(BaseModel):
-    dsn: str = "https://11cee47c7bdd4a2a91e211b2119cb8fb@sentry.unikube.io/6"
+    dsn: str = "https://5e744520c7cb43b3bc7f12ffbe3f4ddf@o146863.ingest.sentry.io/4505120111919104"
     user: str = None
     release: str = None
     environment: str = None
