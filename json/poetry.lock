@@ -275,14 +275,14 @@ develop = ["build", "twine"]
 
 [[package]]
 name = "gefyra"
-version = "1.0.6"
+version = "1.0.7"
 description = "Gefyra runs all developer machine side components of Gefyra's Kubernetes-based development infrastructure"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "gefyra-1.0.6-py3-none-any.whl", hash = "sha256:fdfbaa31d12f91ca2ab6c97a38bc1dbd3e42c4aac548af1338508b142cc59de8"},
-    {file = "gefyra-1.0.6.tar.gz", hash = "sha256:a0485fbb34b3b03c266e9d4fee9794160d029833d278f4818d17ed035f8f942e"},
+    {file = "gefyra-1.0.7-py3-none-any.whl", hash = "sha256:11750642e9a7b9d4f806108023837c6c87f49eaa7bdcbe9fc26aeb926a11a610"},
+    {file = "gefyra-1.0.7.tar.gz", hash = "sha256:0b1613906f8f650acce6ebb8029ebfd1f5a8985370426402cc94aaa63a3125f2"},
 ]
 
 [package.dependencies]
@@ -422,14 +422,14 @@ files = [
 
 [[package]]
 name = "platformdirs"
-version = "3.3.0"
+version = "3.5.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "platformdirs-3.3.0-py3-none-any.whl", hash = "sha256:ea61fd7b85554beecbbd3e9b37fb26689b227ffae38f73353cbcc1cf8bd01878"},
-    {file = "platformdirs-3.3.0.tar.gz", hash = "sha256:64370d47dc3fca65b4879f89bdead8197e93e05d696d6d1816243ebae8595da5"},
+    {file = "platformdirs-3.5.0-py3-none-any.whl", hash = "sha256:47692bc24c1958e8b0f13dd727307cff1db103fca36399f457da8e05f222fdc4"},
+    {file = "platformdirs-3.5.0.tar.gz", hash = "sha256:7954a68d0ba23558d753f73437c55f89027cf8f5108c19844d4b82e5af396335"},
 ]
 
 [package.extras]
@@ -631,14 +631,14 @@ files = [
 
 [[package]]
 name = "requests"
-version = "2.28.2"
+version = "2.29.0"
 description = "Python HTTP for Humans."
 category = "main"
 optional = false
-python-versions = ">=3.7, <4"
+python-versions = ">=3.7"
 files = [
-    {file = "requests-2.28.2-py3-none-any.whl", hash = "sha256:64299f4909223da747622c030b781c0d7811e359c37124b4bd368fb8c6518baa"},
-    {file = "requests-2.28.2.tar.gz", hash = "sha256:98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf"},
+    {file = "requests-2.29.0-py3-none-any.whl", hash = "sha256:e8f3c9be120d3333921d213eef078af392fba3933ab7ed2d1cba3b56f2568c3b"},
+    {file = "requests-2.29.0.tar.gz", hash = "sha256:f2e34a75f4749019bb0e3effb66683630e4ffeaf75819fb51bebef1bf5aef059"},
 ]
 
 [package.dependencies]
@@ -687,14 +687,14 @@ pyasn1 = ">=0.1.3"
 
 [[package]]
 name = "sentry-sdk"
-version = "1.21.0"
+version = "1.21.1"
 description = "Python client for Sentry (https://sentry.io)"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sentry-sdk-1.21.0.tar.gz", hash = "sha256:36a1ca082a3065a8a05aafa4b1e3d74e9459d41fbb0bea8a5364caca68626341"},
-    {file = "sentry_sdk-1.21.0-py2.py3-none-any.whl", hash = "sha256:82faf9e2c9eb77401a7a187094b126ca25c2a3a478de6704612f48b3346f7a84"},
+    {file = "sentry-sdk-1.21.1.tar.gz", hash = "sha256:99c15556a23621be9f18c2955f7ce63321713bf1c0ad396b27b61399bac5f458"},
+    {file = "sentry_sdk-1.21.1-py2.py3-none-any.whl", hash = "sha256:092888f3abf7a2ea78f0bfcefc3e0465caee2b6f0efb26f538ccc60f95dca179"},
 ]
 
 [package.dependencies]
