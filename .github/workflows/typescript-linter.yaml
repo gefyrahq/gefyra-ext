@@ -38,6 +38,12 @@ jobs:
           --agents 1
           -p "31820:31820/UDP@agent:0"
           --image docker.io/rancher/k3s:v1.25.6-k3s1
+    - name: Create script to test current code
+      shell: bash
+      run: |
+        touch gefyra/src/gefyra-json
+        echo "#! /bin/bash" >> gefyra/src/gefyra-json
+        echo "python ../json/main.py $@" >> gefyra/src/gefyra-json
     - name: Test
       working-directory: gefyra/
       run: |

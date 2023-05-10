@@ -78,7 +78,7 @@ export function checkInstalled() {
   if (!existsSync(binaryPath)) {
     throw new InstallError(`Gefyra binary is not installed: ${binaryPath}`);
   } else {
-    chmodSync(binaryPath, 0o111);
+    chmodSync(binaryPath, 0o755);
   }
 }
 
