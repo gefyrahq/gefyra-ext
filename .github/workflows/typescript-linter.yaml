@@ -43,7 +43,7 @@ jobs:
       run: |
         touch gefyra/src/gefyra-json
         echo "#! /bin/bash" >> gefyra/src/gefyra-json
-        echo "poetry run -C ../json python ../json/main.py $@" >> gefyra/src/gefyra-json
+        echo 'poetry run -C ../json python ../json/main.py "${@}"' >> gefyra/src/gefyra-json
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
