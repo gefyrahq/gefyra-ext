@@ -43,7 +43,16 @@ jobs:
       run: |
         touch gefyra/src/gefyra-json
         echo "#! /bin/bash" >> gefyra/src/gefyra-json
-        echo "python ../json/main.py $@" >> gefyra/src/gefyra-json
+        echo "poetry run ../json/main.py $@" >> gefyra/src/gefyra-json
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+    - name: Lint and flake8 client
+      working-directory: json/
+      run: poetry install -n
     - name: Test
       working-directory: gefyra/
       run: |
