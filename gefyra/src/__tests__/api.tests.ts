@@ -1,4 +1,6 @@
-import { ensureInstalled } from '../install';
+const { exec } = require('node:child_process');
+
+import { binaryPath, ensureInstalled } from '../install';
 import { cleanBinary } from './install.tests';
 import { gefyraClient } from '../index';
 import { GefyraStatusResponse } from '../protocol';

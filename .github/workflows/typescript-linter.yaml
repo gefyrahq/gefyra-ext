@@ -38,6 +38,21 @@ jobs:
           --agents 1
           -p "31820:31820/UDP@agent:0"
           --image docker.io/rancher/k3s:v1.25.6-k3s1
+    - name: Create script to test current code
+      shell: bash
+      run: |
+        touch gefyra/src/gefyra-json
+        echo "#! /bin/bash" >> gefyra/src/gefyra-json
+        echo 'poetry run -C ../json python ../json/main.py "${@}"' >> gefyra/src/gefyra-json
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+    - name: Lint and flake8 client
+      working-directory: json/
+      run: poetry install -n
     - name: Test
       working-directory: gefyra/
       run: |
