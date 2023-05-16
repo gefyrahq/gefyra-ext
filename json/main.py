@@ -9,14 +9,13 @@ import sentry_sdk
 
 logging.disable()
 
-import gefyra.configuration
-
-from models import SentryContext, select_model, get_all_actions
-
 __VERSION__ = "0.7.16"
 
 
 def main():
+    import gefyra.configuration
+    from models import SentryContext, select_model, get_all_actions
+
     debug = False
     try:
         sentry_sdk.init(
