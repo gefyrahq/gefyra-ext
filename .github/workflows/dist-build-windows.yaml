@@ -42,10 +42,9 @@ jobs:
         copy README.md ./dist/
         ls ./dist
     - name: Sanity check
+      working-directory: json/dist/
       run: |
-        cd ./dist
         ./gefyra.exe '{"action": "help"}'
-        cd ..
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
