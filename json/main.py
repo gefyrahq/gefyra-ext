@@ -7,20 +7,24 @@ import traceback
 
 import sentry_sdk
 
+from models import SentryContext
+
 logging.disable()
+
+
+sentry_sdk.init(
+    dsn=SentryContext().dsn,
+)
 
 __VERSION__ = "0.7.16"
 
 
 def main():
     import gefyra.configuration
-    from models import SentryContext, select_model, get_all_actions
+    from models import select_model, get_all_actions
 
     debug = False
     try:
-        sentry_sdk.init(
-            dsn=SentryContext().dsn,
-        )
         arguments = sys.argv[1:]
         if not arguments:
             raise RuntimeError("No JSON argument passed")
