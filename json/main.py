@@ -1,3 +1,4 @@
+import docker
 import logging
 import sys
 import json
@@ -22,6 +23,9 @@ __VERSION__ = "0.7.16"
 def main():
     import gefyra.configuration
     from models import select_model, get_all_actions
+
+    c = docker.from_env()
+    print(c.info())
 
     debug = False
     try:
