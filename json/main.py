@@ -21,11 +21,10 @@ __VERSION__ = "0.7.16"
 
 
 def main():
-    import gefyra.configuration
-    from models import select_model, get_all_actions
-
     c = docker.from_env()
     print(c.info())
+    import gefyra.configuration
+    from models import select_model, get_all_actions
 
     debug = False
     try:
