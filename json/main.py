@@ -1,24 +1,7 @@
-import docker
-import logging
 import sys
-import json
-import socket
-import getpass
-import traceback
-
-import sentry_sdk
-
-from models import SentryContext
-
-logging.disable()
 
 
-sentry_sdk.init(
-    dsn=SentryContext().dsn,
-)
-
-__VERSION__ = "0.7.16"
-
+# fixing pyoxidizer and pywin32 related import issues
 def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
     import os
     import site
@@ -40,20 +23,37 @@ def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
     import importlib
     import importlib.machinery
 
-    for name in ["pythoncom", "pywintypes", "win32.win32file"]:
+    for name in ["pythoncom", "pywintypes"]:
         filename = os.path.join(path, name + "39.dll")
         loader = importlib.machinery.ExtensionFileLoader(name, filename)
         spec = importlib.machinery.ModuleSpec(name=name, loader=loader, origin=filename)
         importlib._bootstrap._load(spec)  # type: ignore
 
 
+fix_pywin32_in_frozen_build()
+
+import docker
+import logging
+import json
+import socket
+import getpass
+import traceback
+
+import sentry_sdk
+
+from models import SentryContext
+
+logging.disable()
+
+
+sentry_sdk.init(
+    dsn=SentryContext().dsn,
+)
+
+__VERSION__ = "0.7.16"
+
+
 def main():
-    if sys.platform == "win32": 
-        fix_pywin32_in_frozen_build()
-    import docker.transport.npipesocket
-    print("Import workz")
-    c = docker.from_env()
-    print(c.info())
     import gefyra.configuration
     from models import select_model, get_all_actions
 
