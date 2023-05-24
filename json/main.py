@@ -40,7 +40,7 @@ def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
     import importlib
     import importlib.machinery
 
-    for name in ["pythoncom", "pywintypes", "win32file"]:
+    for name in ["pythoncom", "pywintypes", "win32.win32file"]:
         filename = os.path.join(path, name + "39.dll")
         loader = importlib.machinery.ExtensionFileLoader(name, filename)
         spec = importlib.machinery.ModuleSpec(name=name, loader=loader, origin=filename)
