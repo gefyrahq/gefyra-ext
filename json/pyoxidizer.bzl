@@ -6,6 +6,9 @@
 def resource_callback(policy, resource):
     try:
         print(resource.path)
+    except Exception:
+        pass
+    try:
         print(resource.name)
     except Exception:
         pass
