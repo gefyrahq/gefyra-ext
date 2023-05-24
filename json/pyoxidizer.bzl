@@ -9,7 +9,7 @@ def resource_callback(policy, resource):
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
     if type(resource) in ("PythonExtensionModule"):
-        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe", "win32.win32api", "win32.win32event", "win32.pywintypes"]:
+        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe", "win32.win32api", "win32.win32event", "win32.pywintypes", "win32file", "win32pipe"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
     elif type(resource) in ("PythonModuleSource", "PythonPackageResource", "PythonPackageDistributionResource"):
