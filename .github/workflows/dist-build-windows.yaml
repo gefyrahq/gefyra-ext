@@ -44,7 +44,7 @@ jobs:
     - name: Sanity check
       working-directory: json/dist/
       run: |
-        ./gefyra-json.exe '{"action": "help"}'
+        ./gefyra-json.exe '{\"action\": \"help\"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
