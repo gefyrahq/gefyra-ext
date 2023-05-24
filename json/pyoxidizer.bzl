@@ -13,11 +13,12 @@ def resource_callback(policy, resource):
         if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe", "win32.win32api", "win32.win32event", "win32.pywintypes", "win32file", "win32pipe"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
+        print(resource.name)
     elif type(resource) in ("PythonModuleSource", "PythonPackageResource", "PythonPackageDistributionResource"):
         if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext", "win32api", "win32event", "pywintypes", "win32file", "win32pipe"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
-    print(resource.name)
+        print(resource.name)
 
 def make_exe():
     dist = default_python_distribution()
