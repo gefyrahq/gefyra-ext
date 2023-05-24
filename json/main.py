@@ -32,16 +32,15 @@ def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
 
 fix_pywin32_in_frozen_build()
 
-import docker
-import logging
-import json
-import socket
-import getpass
-import traceback
+import docker  # noqa
+import logging  # noqa
+import json  # noqa
+import socket  # noqa
+import getpass  # noqa
+import traceback  # noqa
 
-import sentry_sdk
-
-from models import SentryContext
+import sentry_sdk  # noqa
+from models import SentryContext  # noqa
 
 logging.disable()
 
