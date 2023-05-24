@@ -76,9 +76,10 @@ def make_win_exe():
 
     # windows
     exe.add_python_resources(exe.read_package_root(CWD, ["main", "models"]))
-    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==6.0.1"]))
+    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==6.1.2"]))
     exe.add_python_resources(exe.pip_install(["--no-binary", "pydantic", "pydantic"]))
-    exe.add_python_resources(exe.pip_install(["docker==6.0.1", "kubernetes", "urllib3<2", "requests<2.29", "cli-tracker", "chardet", "gefyra", "pywin32==304"]))
+    exe.add_python_resources(exe.pip_install(["docker==6.1.2", "kubernetes", "urllib3==2.0.2", "requests==2.31.0", "cli-tracker", "chardet", "gefyra"]))
+    exe.add_python_resources(exe.pip_install(["pywin32"]))
     exe.add_python_resources(exe.pip_install(["tabulate"]))
     exe.windows_runtime_dlls_mode = "always"
     return exe

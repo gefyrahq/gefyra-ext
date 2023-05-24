@@ -19,8 +19,37 @@ sentry_sdk.init(
 
 __VERSION__ = "0.7.16"
 
+def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
+    import os
+    import site
+
+    if sys.platform != "win32" or not getattr(sys, "frozen", False):
+        return
+
+    site.addsitedir(sys.path[0])
+    customsite = os.path.join(sys.path[0], "lib")
+    site.addsitedir(customsite)
+
+    # sys.path has been extended; use final
+    # path to locate dll folder and add it to path
+    path = sys.path[-1]
+    path = path.replace("Pythonwin", "pywin32_system32")
+    os.environ["PATH"] += ";" + path
+
+    # import pythoncom module
+    import importlib
+    import importlib.machinery
+
+    for name in ["pythoncom", "pywintypes", "win32file"]:
+        filename = os.path.join(path, name + "39.dll")
+        loader = importlib.machinery.ExtensionFileLoader(name, filename)
+        spec = importlib.machinery.ModuleSpec(name=name, loader=loader, origin=filename)
+        importlib._bootstrap._load(spec)  # type: ignore
+
 
 def main():
+    if sys.platform == "win32": 
+        fix_pywin32_in_frozen_build()
     import docker.transport.npipesocket
     print("Import workz")
     c = docker.from_env()
