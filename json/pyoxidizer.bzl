@@ -4,15 +4,8 @@
 # configuration file format.
 
 def resource_callback(policy, resource):
-    try:
-        print(resource.path)
-    except Exception:
-        pass
-    try:
-        print(resource.name)
-    except Exception:
-        pass
     if type(resource) in ("File"):
+        print(resource.path)
         if "pywin" in resource.path or "pypiwin" in resource.path or "win32file" in resource.path:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
@@ -24,6 +17,7 @@ def resource_callback(policy, resource):
         if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext", "win32api", "win32event", "pywintypes", "win32file", "win32pipe"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
+    print(resource.name)
 
 def make_exe():
     dist = default_python_distribution()
