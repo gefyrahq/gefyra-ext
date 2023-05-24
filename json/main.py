@@ -21,6 +21,7 @@ __VERSION__ = "0.7.16"
 
 
 def main():
+    import docker.transport.npipesocket
     c = docker.from_env()
     print(c.info())
     import gefyra.configuration
