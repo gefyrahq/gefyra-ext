@@ -8,14 +8,15 @@ def resource_callback(policy, resource):
         if "pywin" in resource.path or "pypiwin" in resource.path:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
-    if type(resource) in ("PythonExtensionModule"):
-        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe"]:
-            resource.add_location = "filesystem-relative:lib"
-            resource.add_include = True
-    elif type(resource) in ("PythonModuleSource", "PythonPackageResource", "PythonPackageDistributionResource"):
-        if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext"]:
-            resource.add_location = "filesystem-relative:lib"
-            resource.add_include = True
+    if type(resource) in ("PythonExtensionModule"):
+        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe", "win32.pywintypes", "win32.win32event", "win32.win32api"]:
+            resource.add_location = "filesystem-relative:lib"
+            resource.add_include = True
+    elif type(resource) in ("PythonModuleSource", "PythonPackageResource", "PythonPackageDistributionResource"):
+        if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext", "pywintypes", "win32event", "win32api"]:
+            resource.add_location = "filesystem-relative:lib"
+            resource.add_include = True
+
 
 def make_exe():
     dist = default_python_distribution()
