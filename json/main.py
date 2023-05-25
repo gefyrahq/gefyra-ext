@@ -49,7 +49,7 @@ sentry_sdk.init(
     dsn=SentryContext().dsn,
 )
 
-__VERSION__ = "0.7.16"
+__VERSION__ = "0.7.17"
 
 
 def main():
