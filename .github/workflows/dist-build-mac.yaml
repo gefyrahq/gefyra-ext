@@ -60,11 +60,6 @@ jobs:
         # We finally codesign our app bundle, specifying the Hardened runtime option
         
         /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime ./gefyra-json -v
-    - name: Sanity check
-      run: |
-        brew install docker
-        colima start
-        ./gefyra-json '{"action": "help"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
@@ -74,6 +69,11 @@ jobs:
           LICENSE
           README.md
         retention-days: 5
+    - name: Sanity check
+      run: |
+        brew install docker
+        colima start
+        ./gefyra-json '{"action": "help"}'
     - name: Create release zip
       if: ${{ github.event.release && github.event.action == 'published' }}
       run: zip gefyra-${{ env.APP_VERSION }}-darwin-universal.zip "gefyra-json" "LICENSE" "README.md"

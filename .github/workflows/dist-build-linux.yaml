@@ -33,10 +33,6 @@ jobs:
         cp `find build/ -name "gefyra-json"` ../gefyra-json
         strip -s ../gefyra-json
         cat pyproject.toml | grep version -m 1 | awk '{ print "APP_VERSION="substr($3, 2, length($3) -2)}' >> $GITHUB_ENV
-    
-    - name: Sanity check
-      run: |
-        ./gefyra-json '{"action": "help"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
@@ -46,6 +42,10 @@ jobs:
           LICENSE
           README.md
         retention-days: 5
+    
+    - name: Sanity check
+      run: |
+        ./gefyra-json '{"action": "help"}'
     - name: Create release zip
       if: ${{ github.event.release && github.event.action == 'published' }}
       run: zip gefyra-${{ env.APP_VERSION }}-linux-amd64.zip "gefyra-json" "LICENSE" "README.md"
