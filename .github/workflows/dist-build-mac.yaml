@@ -62,7 +62,7 @@ jobs:
         /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime ./gefyra-json -v
     - name: Sanity check
       run: |
-        ./gefyra-json '{\"action\": \"help\"}'
+        ./gefyra-json '{"action": "help"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
