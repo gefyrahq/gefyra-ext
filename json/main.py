@@ -1,26 +1,63 @@
-import logging
 import sys
-import json
-import socket
-import getpass
-import traceback
 
-import sentry_sdk
+
+# fixing pyoxidizer and pywin32 related import issues
+def fix_pywin32_in_frozen_build() -> None:  # pragma: no cover
+    import os
+    import site
+
+    if sys.platform != "win32" or not getattr(sys, "frozen", False):
+        return
+
+    site.addsitedir(sys.path[0])
+    customsite = os.path.join(sys.path[0], "lib")
+    site.addsitedir(customsite)
+
+    # sys.path has been extended; use final
+    # path to locate dll folder and add it to path
+    path = sys.path[-1]
+    path = path.replace("Pythonwin", "pywin32_system32")
+    os.environ["PATH"] += ";" + path
+
+    # import pythoncom module
+    import importlib
+    import importlib.machinery
+
+    for name in ["pythoncom", "pywintypes"]:
+        filename = os.path.join(path, name + "39.dll")
+        loader = importlib.machinery.ExtensionFileLoader(name, filename)
+        spec = importlib.machinery.ModuleSpec(name=name, loader=loader, origin=filename)
+        importlib._bootstrap._load(spec)  # type: ignore
+
+
+fix_pywin32_in_frozen_build()
+
+import docker  # noqa
+import logging  # noqa
+import json  # noqa
+import socket  # noqa
+import getpass  # noqa
+import traceback  # noqa
+
+import sentry_sdk  # noqa
+from models import SentryContext  # noqa
 
 logging.disable()
+
+
+sentry_sdk.init(
+    dsn=SentryContext().dsn,
+)
 
 __VERSION__ = "0.7.16"
 
 
 def main():
     import gefyra.configuration
-    from models import SentryContext, select_model, get_all_actions
+    from models import select_model, get_all_actions
 
     debug = False
     try:
-        sentry_sdk.init(
-            dsn=SentryContext().dsn,
-        )
         arguments = sys.argv[1:]
         if not arguments:
             raise RuntimeError("No JSON argument passed")

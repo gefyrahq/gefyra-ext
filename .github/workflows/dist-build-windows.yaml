@@ -41,6 +41,10 @@ jobs:
         xcopy .\build\x86_64-pc-windows-msvc\release\wininstall\* .\dist /s /e /k /i /y
         copy README.md ./dist/
         ls ./dist
+    - name: Sanity check
+      working-directory: json/dist/
+      run: |
+        ./gefyra-json.exe '{\"action\": \"help\"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:

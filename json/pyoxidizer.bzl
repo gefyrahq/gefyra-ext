@@ -9,11 +9,11 @@ def resource_callback(policy, resource):
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
     if type(resource) in ("PythonExtensionModule"):
-        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe"]:
+        if resource.name in ["_ssl", "win32.win32file", "win32.win32pipe", "win32.pywintypes", "win32.win32event", "win32.win32api"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
     elif type(resource) in ("PythonModuleSource", "PythonPackageResource", "PythonPackageDistributionResource"):
-        if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext"]:
+        if resource.name in ["pywin32_bootstrap", "pythoncom", "pypiwin32", "pywin32", "pythonwin", "win32", "win32com", "win32comext", "pywintypes", "win32event", "win32api"]:
             resource.add_location = "filesystem-relative:lib"
             resource.add_include = True
 
@@ -73,11 +73,10 @@ def make_win_exe():
 
     # windows
     exe.add_python_resources(exe.read_package_root(CWD, ["main", "models"]))
-    exe.add_python_resources(exe.pip_install(["--no-deps", "docker==6.0.1"]))
+    exe.add_python_resources(exe.pip_install(["docker"]))
     exe.add_python_resources(exe.pip_install(["--no-binary", "pydantic", "pydantic"]))
-    exe.add_python_resources(exe.pip_install(["kubernetes", "urllib3==1.26.15", "requests==2.28.2", "cli-tracker", "chardet", "gefyra"]))
-    exe.add_python_resources(exe.pip_install(["pywin32"]))
-    exe.add_python_resources(exe.pip_install(["tabulate"]))
+    # certifi from version 2022.06.15.1 does not work
+    exe.add_python_resources(exe.pip_install(["gefyra", "certifi==2022.06.15", "kubernetes", "packaging==21.3", "tabulate", "cli-tracker"]))
     exe.windows_runtime_dlls_mode = "always"
     return exe
 
