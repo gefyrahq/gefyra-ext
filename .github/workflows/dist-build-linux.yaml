@@ -33,6 +33,10 @@ jobs:
         cp `find build/ -name "gefyra-json"` ../gefyra-json
         strip -s ../gefyra-json
         cat pyproject.toml | grep version -m 1 | awk '{ print "APP_VERSION="substr($3, 2, length($3) -2)}' >> $GITHUB_ENV
+    
+    - name: Sanity check
+      run: |
+        ./gefyra-json '{\"action\": \"help\"}'
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
